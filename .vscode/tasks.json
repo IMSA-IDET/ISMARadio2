@@ -9,7 +9,9 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\bin\\audio.exe"
+                "${fileDirname}\\bin\\audio.exe",
+                "-I${workspaceFolder}/include",
+                "-lws2_32"
             ],
             "options": {
                 "cwd": "${fileDirname}"

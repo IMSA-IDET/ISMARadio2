@@ -9,7 +9,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\bin\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\bin\\audio.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"

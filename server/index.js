@@ -3,7 +3,12 @@ import { Server } from "socket.io"
 import http from "http"
 import bodyParser from "body-parser"
 import fs from "fs"
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 //require("dotenv").config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Config
 const PORT = 3001;

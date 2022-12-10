@@ -1,100 +1,16 @@
-﻿using NAudio.CoreAudioApi;
-using NAudio.Wave;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public static class main
+namespace audio
 {
-    public static void Main()
+    internal class Main
     {
-        ListDevices();
-        DemoSingleChannel(0);
-    }
-
-    public static void ListDevices()
-    {
-        for (int i = -1; i < WaveIn.DeviceCount; i++)
+        public void main()
         {
-            var caps = NAudio.Wave.WaveIn.GetCapabilities(i);
-            Console.WriteLine($"{i}: {caps.ProductName}");
-        }
-    }
-
-    public static float GetVolume()
-    {
-        var devEnum = new MMDeviceEnumerator();
-        var defaultDevice = devEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-        var volume = defaultDevice.AudioEndpointVolume;
-        float masterVolumePercent = volume.MasterVolumeLevelScalar;
-
-        return masterVolumePercent + 0.01f;
-    }
-
-    public static void DemoSingleChannel(int deviceID)
-    {
-        var waveIn = new WaveInEvent
-        {
-            DeviceNumber = deviceID,
-            WaveFormat = new WaveFormat(rate: 44100, bits: 16, channels: 1),
-            BufferMilliseconds = 20
-        };
-        waveIn.DataAvailable += WaveIn_DataAvailable;
-        waveIn.StartRecording();
-
-        Console.WriteLine("C# Audio Level Meter");
-        Console.WriteLine("(press any key to exit)");
-        Console.ReadKey();
-
-        static void WaveIn_DataAvailable(object? sender, WaveInEventArgs e)
-        {
-            // copy buffer into an array of integers
-            Int16[] values = new Int16[e.Buffer.Length / 2];
-            Buffer.BlockCopy(e.Buffer, 0, values, 0, e.Buffer.Length);
-
-            // determine the highest value as a fraction of the maximum possible value
-            float fraction = (float)values.Max() / (1 << 15);
-
-            // print a level meter using the console
-            string bar = new('#', (int)(fraction * 70));
-            string meter = "[" + bar.PadRight(60, '-') + "]";
-            Console.CursorLeft = 0;
-            Console.CursorVisible = false;
-            Console.Write($"{meter} {fraction * 100:00.0}%");
-        }
-    }
-
-    public static void DemoTwoChannel(int deviceID)
-    {
-        var waveIn = new NAudio.Wave.WaveInEvent
-        {
-            DeviceNumber = deviceID,
-            WaveFormat = new WaveFormat(rate: 44100, bits: 16, channels: 2),
-            BufferMilliseconds = 20
-        };
-        waveIn.DataAvailable += WaveIn_DataAvailable;
-        waveIn.StartRecording();
-
-        Console.WriteLine("C# Audio Level Meter");
-        Console.WriteLine("(press any key to exit)");
-        Console.ReadKey();
-
-        static void WaveIn_DataAvailable(object? sender, WaveInEventArgs e)
-        {
-            int bytesPerSample = 2;
-            int channelCount = 2;
-            int sampleCount = e.Buffer.Length / bytesPerSample / channelCount;
-
-            Int16[] valuesL = new Int16[sampleCount];
-            Int16[] valuesR = new Int16[sampleCount];
-
-            for (int i = 0; i < sampleCount; i++)
-            {
-                int position = i * bytesPerSample * channelCount;
-                valuesL[i] = BitConverter.ToInt16(e.Buffer, position);
-                valuesR[i] = BitConverter.ToInt16(e.Buffer, position + 2);
-            }
-
-            Console.CursorLeft = 0;
-            Console.CursorVisible = false;
-            Console.Write($"L: {valuesL.Max() / 327.68:N}%   R:{valuesR.Max() / 327.680:N}%");
+            Sound sound = new Sound();
         }
     }
 }

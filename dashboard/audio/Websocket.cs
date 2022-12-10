@@ -23,31 +23,5 @@ namespace audio
         {
             webscoket.Send(data);
         }
-
-        /*WebSocketServer server;
-
-        public Websocket(int port)
-        {
-            server = new WebSocketServer(port);
-
-            server.AddWebSocketService<SoundStream>("/stream");
-            server.Start();
-            Console.WriteLine("Server started");
-            Console.ReadKey(true);
-            server.Stop();
-        }
-
-        public class SoundStream : WebSocketBehavior
-        {
-            protected override void OnMessage(MessageEventArgs e)
-            {
-                Console.WriteLine("Data recieved: " + e.Data);
-            }
-        }
-
-        public void SendSoundData(byte[] data)
-        {
-            server.WebSocketServices["/stream"].Sessions.Broadcast(data);
-        }*/
     }
 }

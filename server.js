@@ -17,8 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // Websocket proxy
 wss.on("connection", ws => {
     ws.on("message", data => {
-        console.log(data)
-        ws.emit(data);
+        wss.clients.forEach(client =>{
+            client.send(data);
+        });
     });
 });
 

@@ -43,7 +43,7 @@ namespace audio
             {
                 DeviceNumber = deviceID,
                 WaveFormat = new WaveFormat(rate: 44100, bits: 16, channels: 1),
-                BufferMilliseconds = 20
+                BufferMilliseconds = 2000
             };
 
             waveIn.DataAvailable += new EventHandler<WaveInEventArgs>(waveInDataHandler);

@@ -3,7 +3,7 @@ const { exec } = require("node:child_process")
  
 const createWindow = () => {
     const win = new BrowserWindow({
-      width: 800,
+      width: 500,
       height: 600,
       autoHideMenuBar: true,
       resizable: false,

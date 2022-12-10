@@ -2,9 +2,9 @@
     display: inline-block;
     width: fit-content;
     height: fit-content;
-    margin-left: 20%;
+    margin-left: 150px;
     transform: translateX(-50%);
-    padding: 5px;
+    padding: 2px;
 }
 
 #settingsContainer>.setting>h6 {
@@ -15,4 +15,8 @@
 }
 #settingsContainer>.setting>input {
     margin-bottom: 15px;
+    display: block;
+}
+#settingsContainer>.setting>input:hover {
+    background-color: var(--general-button-hover);
 }

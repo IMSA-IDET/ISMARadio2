@@ -9,8 +9,10 @@
     --general-button-hover: rgb(136, 144, 255);
     --general-button-active: rgb(152, 159, 255);
     --general-button-activated: rgb(77, 87, 232);
-}
 
+    /* ligther highlighting for text entries */
+    --general-button-hover: rgb(226, 228, 255);
+}
 @font-face {
     font-family: inter-var;
     src: url(https://www.notion.so/_next/static/media/Inter-Var.730e8169.woff2);
@@ -21,5 +23,6 @@ body {
     padding: 0;
     background-color: var(--primary-background-color);
     font-family: inter-var;
+    user-select: none;
 }
 

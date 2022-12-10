@@ -1,0 +1,38 @@
+#navbar {
+    position: fixed;
+    box-shadow: 1px 0px 3px var(--primary-shadow-color);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: inline-block;
+    z-index: 1;
+}
+
+.navbutton {
+    border-bottom: 1px translucent;
+    margin: 0;
+    padding: 3px;
+    display: block;
+    width: fit-content;
+    box-shadow: 0px 1px 1px var(--primary-shadow-color);
+    transition: 200ms;
+    }
+
+.navbutton>img {
+    width: 40px;
+    height: 40px;
+}
+    
+
+.navbutton:hover {
+    background-color: var(--general-button-hover) ;
+}
+
+.navbutton:active {
+    background-color: var(--general-button-active);
+}
+
+.activebutton {
+    background-color: var(--general-button-activated);
+}
+

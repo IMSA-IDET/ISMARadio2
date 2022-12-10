@@ -10,7 +10,21 @@ namespace audio
 {
     public class Websocket
     {
-        WebSocketServer server;
+        WebSocket webscoket;
+
+        public Websocket(int port)
+        {
+            webscoket = new WebSocket("ws://localhost:" + port.ToString());
+            webscoket.Connect();
+            Console.WriteLine("Client started");
+        }
+
+        public void SendSoundData(byte[] data)
+        {
+            webscoket.Send(data);
+        }
+
+        /*WebSocketServer server;
 
         public Websocket(int port)
         {
@@ -34,6 +48,6 @@ namespace audio
         public void SendSoundData(byte[] data)
         {
             server.WebSocketServices["/stream"].Sessions.Broadcast(data);
-        }
+        }*/
     }
 }

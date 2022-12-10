@@ -50,6 +50,8 @@ namespace audio
             waveIn.RecordingStopped += new EventHandler<StoppedEventArgs>(waveInStopHandler);
             waveIn.StartRecording();
 
+            Console.ReadKey();
+
             void waveInDataHandler(object? sender, WaveInEventArgs e)
             {
                 byte[] buffer = e.Buffer;

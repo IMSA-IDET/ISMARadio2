@@ -1,10 +1,19 @@
-const {app,BrowserWindow} = require('electron')
-
+const { app, BrowserWindow } = require('electron')
+const { exec } = require("node:child_process")
+ 
 const createWindow = () => {
     const win = new BrowserWindow({
       width: 800,
-      height: 600
+      height: 600,
+      autoHideMenuBar: true,
+      resizable: false,
+      webPreferences: {
+      }
     })
   
-    win.loadFile('public/index.html')
+    win.loadFile('public/settings.html')
   }
+
+  app.whenReady().then(() => {
+    createWindow()
+  })

@@ -12,27 +12,28 @@ namespace audio
     {
         WebSocketServer server;
 
-        public Websocket()
+        public Websocket(int port)
         {
-            server = new WebSocketServer("ws://dragonsnest.far");
+            server = new WebSocketServer(port);
 
-            server.AddWebSocketService<Test>("/stream");
+            server.AddWebSocketService<SoundStream>("/stream");
             server.Start();
+            Console.WriteLine("Server started");
             Console.ReadKey(true);
             server.Stop();
         }
 
-        public class Test : WebSocketBehavior
+        public class SoundStream : WebSocketBehavior
         {
             protected override void OnMessage(MessageEventArgs e)
             {
-                //Send(msg);
+                Console.WriteLine("Data recieved: " + e.Data);
             }
         }
 
         public void SendSoundData(byte[] data)
         {
-            
+            server.WebSocketServices["/stream"].Sessions.Broadcast(data);
         }
     }
 }

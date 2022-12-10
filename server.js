@@ -5,6 +5,7 @@ import bodyParser from "body-parser"
 import fs from "fs"
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import request from "request"
 
 // Config
 const PORT = 3001;
@@ -16,9 +17,10 @@ const io = new Server(server);
 app.use(express.static("public", { extensions: ["html"] }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
-
-
+app.use('/api', function(req, res) {
+    var url = "http://google.com" + req.url;
+    req.pipe(request(url)).pipe(res);
+});
 
 //Start server listening
 server.listen(PORT, () => {

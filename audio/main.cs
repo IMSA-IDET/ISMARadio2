@@ -1,17 +1,17 @@
 ﻿using NAudio.CoreAudioApi;
+using NAudio.Wave;
 
 public static class main
 {
     public static void Main()
     {
         ListDevices();
-        DemoSingleChannel(1);
-        //DemoTwoChannel(-1);
+        DemoSingleChannel(0);
     }
 
     public static void ListDevices()
     {
-        for (int i = -1; i < NAudio.Wave.WaveIn.DeviceCount; i++)
+        for (int i = -1; i < WaveIn.DeviceCount; i++)
         {
             var caps = NAudio.Wave.WaveIn.GetCapabilities(i);
             Console.WriteLine($"{i}: {caps.ProductName}");
@@ -30,10 +30,10 @@ public static class main
 
     public static void DemoSingleChannel(int deviceID)
     {
-        var waveIn = new NAudio.Wave.WaveInEvent
+        var waveIn = new WaveInEvent
         {
             DeviceNumber = deviceID,
-            WaveFormat = new NAudio.Wave.WaveFormat(rate: 44100, bits: 16, channels: 1),
+            WaveFormat = new WaveFormat(rate: 44100, bits: 16, channels: 1),
             BufferMilliseconds = 20
         };
         waveIn.DataAvailable += WaveIn_DataAvailable;
@@ -43,7 +43,7 @@ public static class main
         Console.WriteLine("(press any key to exit)");
         Console.ReadKey();
 
-        static void WaveIn_DataAvailable(object? sender, NAudio.Wave.WaveInEventArgs e)
+        static void WaveIn_DataAvailable(object? sender, WaveInEventArgs e)
         {
             // copy buffer into an array of integers
             Int16[] values = new Int16[e.Buffer.Length / 2];
@@ -53,7 +53,7 @@ public static class main
             float fraction = (float)values.Max() / (1 << 15);
 
             // print a level meter using the console
-            string bar = new('#', (int)((fraction * 70) / GetVolume()));
+            string bar = new('#', (int)(fraction * 70));
             string meter = "[" + bar.PadRight(60, '-') + "]";
             Console.CursorLeft = 0;
             Console.CursorVisible = false;
@@ -65,8 +65,8 @@ public static class main
     {
         var waveIn = new NAudio.Wave.WaveInEvent
         {
-            DeviceNumber = deviceID, // indicates which microphone to use
-            WaveFormat = new NAudio.Wave.WaveFormat(rate: 44100, bits: 16, channels: 2),
+            DeviceNumber = deviceID,
+            WaveFormat = new WaveFormat(rate: 44100, bits: 16, channels: 2),
             BufferMilliseconds = 20
         };
         waveIn.DataAvailable += WaveIn_DataAvailable;
@@ -76,7 +76,7 @@ public static class main
         Console.WriteLine("(press any key to exit)");
         Console.ReadKey();
 
-        static void WaveIn_DataAvailable(object? sender, NAudio.Wave.WaveInEventArgs e)
+        static void WaveIn_DataAvailable(object? sender, WaveInEventArgs e)
         {
             int bytesPerSample = 2;
             int channelCount = 2;

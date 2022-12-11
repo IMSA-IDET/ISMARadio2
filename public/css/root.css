@@ -1,18 +1,18 @@
 :root {
-    --bodyBackgroundColor: rgb(0, 0, 0);
+    --bodyBackgroundColor: rgb(5, 5, 5);
 
     /* text colors*/
     --primaryTextColor: #fff;
     
 
     /* shadows */
-    --primaryShadowColor: rgb(36, 36, 36);
-    --secondaryShadowColor: rgb(51, 51, 51);
+    --primaryShadowColor: rgb(28, 28, 28);
+    --secondaryShadowColor: rgb(28, 28, 28);
     
     /* widget colors */
     --navColor: rgb(0, 0, 0);
-    --secondaryWidgetColor: rgb(15, 15, 15);
-    --navhighlightColor: rgb(169, 161, 213);
+    --secondaryWidgetColor: rgb(4, 4, 4);
+    --navhighlightColor: rgb(36, 23, 40);
     --linkBottomBorder: #993FFF;
 }
 

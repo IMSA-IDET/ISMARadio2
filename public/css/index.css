@@ -103,6 +103,7 @@
     border-radius: 5px;
     border: 1px solid var(--secondaryShadowColor);
     transition: 200ms;
+    background-color: var(--bodyBackgroundColor);
 }
 
 #chatInput:hover {
@@ -173,7 +174,13 @@
     border-radius: 25px;
     
 }
-#volcontr::-webkit-slider-t {
+#volcontrol::-webkit-slider-thumb {
     -webkit-appearance: none;
-    border-radius: 25px;
-}
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; 
+    background: var(--bodyBackgroundColor);
+    cursor: pointer;
+  }
+  

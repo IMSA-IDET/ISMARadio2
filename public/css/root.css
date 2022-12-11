@@ -1,3 +1,19 @@
+:root {
+    --bodyBackgroundColor: white;
+
+    /* text colors*/
+    --primaryTextColor: #000000;
+    
+
+    /* shadows */
+    --primaryShadowColor: rgb(211, 211, 211);
+    
+    /* widget colors */
+    --navColor: white;
+    --navhighlightColor: rgb(195, 238, 252);
+    --linkBottomBorder: rgb(59, 112, 208);
+}
+
 @font-face {
     font-family: Ubuntu;
     src: url('font/Ubuntu-Regular.ttf')

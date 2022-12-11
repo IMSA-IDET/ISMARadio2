@@ -1,0 +1,28 @@
+#bottomControlPanel {
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    box-shadow: 0px -1px 1px var(--primaryShadowColor);
+    background-color: var(--navColor);
+}
+
+#currentPlayingDetails {
+    border: 1px solid red;
+    width: 500px;
+}
+
+#currentPlayingDetails>* {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+}
+
+#broadcastCover {
+    width: 128px;
+    height: 128px;
+}
+
+#broadcastInformation>* {
+    display: inline-block;
+}

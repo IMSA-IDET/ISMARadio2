@@ -38,7 +38,7 @@ namespace audio
             return masterVolumePercent;
         }
 
-        public void StartRecording(int deviceID)
+        public void StartRecording(int deviceID, string recordingName)
         {
             waveIn = new WaveInEvent
             {
@@ -47,11 +47,14 @@ namespace audio
                 BufferMilliseconds = 1000
             };
 
-            var outputFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test");
-            Directory.CreateDirectory(outputFolder);
-            var outputFilePath = Path.Combine(outputFolder, "test.wav");
 
-            writer = new WaveFileWriter(outputFilePath, waveIn.WaveFormat);
+            string workingDir = Environment.CurrentDirectory;
+            string projectDir = Directory.GetParent(workingDir).Parent.Parent.Parent.Parent.FullName;
+            string outputDir = Path.Combine(projectDir, @"public\record");
+            Directory.CreateDirectory(outputDir);
+            string outputPath = Path.Combine(outputDir, recordingName + ".wav");
+
+            writer = new WaveFileWriter(outputPath, waveIn.WaveFormat);
 
             waveIn.DataAvailable += new EventHandler<WaveInEventArgs>(waveInDataHandler);
             waveIn.RecordingStopped += new EventHandler<StoppedEventArgs>(waveInStopHandler);

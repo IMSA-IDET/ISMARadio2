@@ -8,12 +8,25 @@ namespace audio
 {
     internal class Audio
     {
-        static public void Main()
+        /*
+         * Arguments:
+         * [0]: socket server URL
+         * [1]: microphone ID
+         * [2]: recoding's file name
+         */
+        static public void Main(string[] args)
         {
-            Websocket websocket = new Websocket("ws://143.195.43.164:3001");
-            Sound sound = new Sound(websocket);
+            if (args.Length > 0)
+            {
+                Websocket websocket = new Websocket(args[0]);
+                Sound sound = new Sound(websocket);
 
-            sound.StartRecording(0);
+                sound.StartRecording(int.Parse(args[1]), args[2]);
+            } else
+            {
+                Console.WriteLine("No arguments provided");
+                Environment.Exit(1);
+            }
         }
     }
 }

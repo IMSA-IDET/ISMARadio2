@@ -1,7 +1,7 @@
 // Config
 const serverURL = "ws://localhost:3001";
 
-const playBtn = document.getElementById("playButton");
+const playBtn = document.getElementsByTagName("button")[0]//document.getElementById("playButton");
 let playClicked = false;
 
 let context = new (window.AudioContext || window.webkitAudioContext)();
@@ -18,6 +18,8 @@ playBtn.addEventListener("click", _ => {
             let socketBuffer = await event.data.arrayBuffer();
             socketBuffer = new Int32Array(socketBuffer);
 
+            let visualBuffer = new Float32Array(socketBuffer.length);
+
             const audioBuffer = context.createBuffer(
                 1,
                 44100,
@@ -25,8 +27,8 @@ playBtn.addEventListener("click", _ => {
             );
 
             for (let i = 0; i < audioBuffer.length; i++) {
-                socketBuffer[i] = socketBuffer[i] / 2147483647; // 2^32 / 2 -1
-                audioBuffer.getChannelData(0)[i] = socketBuffer[i];
+                visualBuffer[i] = socketBuffer[i] / 2147483647; // 2^32 / 2 -1
+                audioBuffer.getChannelData(0)[i] = visualBuffer[i]
             }
 
             // TODO: send socketBuffer array to canvas audio visual

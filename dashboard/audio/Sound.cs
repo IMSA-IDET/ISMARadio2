@@ -61,12 +61,14 @@ namespace audio
 
             void waveInDataHandler(object? sender, WaveInEventArgs e)
             {
-                byte[] buffer = e.Buffer;//new ArraySegment<byte>(e.Buffer)
+                byte[] buffer = e.Buffer;
+                websocket.SendSoundData(buffer);
+
+                // Stop recording at 30 seconds
                 if (writer.Position < waveIn.WaveFormat.AverageBytesPerSecond * 30)
                 {
                     writer.Write(e.Buffer, 0, e.BytesRecorded);
                 }
-                websocket.SendSoundData(buffer);
             }
 
             void waveInStopHandler(object? sender, StoppedEventArgs e)

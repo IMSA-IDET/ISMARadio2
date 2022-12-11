@@ -16,24 +16,9 @@ app.use(express.static("public", { extensions: ["html"] }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Websocket proxy
-/*wss.on("connection", ws => {
-    ws.on("message", data => {
-        wss.clients.forEach(client =>{
-            client.send(data);
-        });
-    });
-});*/
-
 wss.on("connection", ws => {
     ws.on("message", data => {
         wss.clients.forEach(client =>{
-            console.log(typeof data)
-            let test = new Float32Array(data)//
-
-            for (let i = 0; i < 44100 * 2; i++) {
-                test[i] = Math.sin(i)
-            }
-
             client.send(data);
         });
     });

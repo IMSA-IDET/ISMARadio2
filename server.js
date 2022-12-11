@@ -27,7 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 wss.on("connection", ws => {
     ws.on("message", data => {
         wss.clients.forEach(client =>{
-            let test = new Float32Array(44100 * 2)
+            console.log(typeof data)
+            let test = new Float32Array(data)//
 
             for (let i = 0; i < 44100 * 2; i++) {
                 test[i] = Math.sin(i)

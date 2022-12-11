@@ -13,8 +13,6 @@ namespace audio
         public Sound(Websocket ws)
         {
             websocket = ws;
-
-           
         }
 
         public WaveInCapabilities[] GetDeviceList()
@@ -64,10 +62,9 @@ namespace audio
             void waveInDataHandler(object? sender, WaveInEventArgs e)
             {
                 byte[] buffer = e.Buffer;//new ArraySegment<byte>(e.Buffer)
-                //writer.Write(e.Buffer, 0, e.BytesRecorded);
-                if (writer.Position > waveIn.WaveFormat.AverageBytesPerSecond * 30)
+                if (writer.Position < waveIn.WaveFormat.AverageBytesPerSecond * 30)
                 {
-                    waveIn.StopRecording();
+                    writer.Write(e.Buffer, 0, e.BytesRecorded);
                 }
                 websocket.SendSoundData(buffer);
             }

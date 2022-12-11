@@ -12,9 +12,9 @@ namespace audio
     {
         WebSocket webscoket;
 
-        public Websocket(int port)
+        public Websocket(string url)
         {
-            webscoket = new WebSocket("ws://localhost:" + port.ToString());
+            webscoket = new WebSocket(url);
             webscoket.Connect();
             Console.WriteLine("Client started");
         }

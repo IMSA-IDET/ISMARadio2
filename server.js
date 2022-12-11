@@ -12,13 +12,13 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server: server });
 
-app.use(express.static("public", { extensions: ["html"] }))
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.static("public", { extensions: ["html"] }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Websocket proxy
 wss.on("connection", ws => {
     ws.on("message", data => {
-        wss.clients.forEach(client =>{
+        wss.clients.forEach(client => {
             client.send(data);
         });
     });

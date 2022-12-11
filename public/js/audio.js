@@ -1,17 +1,18 @@
-const playBtn = document.getElementsByTagName("button")[0];
+// Config
+const serverURL = "ws://localhost:3001";
+
+const playBtn = document.getElementById("playButton");
 let playClicked = false;
+
+let context = new (window.AudioContext || window.webkitAudioContext)();
+let socket = new WebSocket(serverURL);
 
 playBtn.addEventListener("click", _ => {
     if (!playClicked) {
         playClicked = true;
 
         // TODO: do some button effects/animations/style changes
-        playBtn.innerHTML = "clicked";
-
-        // TODO: initiate audio visualization
-
-        const context = new (window.AudioContext || window.webkitAudioContext)();
-        const socket = new WebSocket("ws://143.195.43.164:3001");
+        playBtn.innerHTML = "pause";
 
         socket.addEventListener("message", async event => {
             let socketBuffer = await event.data.arrayBuffer();
@@ -24,13 +25,24 @@ playBtn.addEventListener("click", _ => {
             );
 
             for (let i = 0; i < audioBuffer.length; i++) {
-                audioBuffer.getChannelData(0)[i] = socketBuffer[i] / 2147483647//4294967295; // 2^32 / 2 -1
+                socketBuffer[i] = socketBuffer[i] / 2147483647; // 2^32 / 2 -1
+                audioBuffer.getChannelData(0)[i] = socketBuffer[i];
             }
+
+            // TODO: send socketBuffer array to canvas audio visual
 
             const source = context.createBufferSource();
             source.buffer = audioBuffer;
             source.connect(context.destination);
             source.start();
         });
+    } else {
+        playClicked = false;
+
+        context = null;
+        socket = null;
+
+        // TODO: do some button effects/animations/style changes
+        playBtn.innerHTML = "play";
     }
 })

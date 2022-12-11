@@ -5,11 +5,18 @@
     width: 100%;
     box-shadow: 0px -1px 1px var(--primaryShadowColor);
     background-color: var(--navColor);
+
 }
 
 #currentPlayingDetails {
-    border: 1px solid red;
-    width: 500px;
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: var(--secondaryWidgetColor);
+    box-shadow: 0px 0px 3px var(--secondaryShadowColor);
 }
 
 #currentPlayingDetails>* {
@@ -19,10 +26,147 @@
 }
 
 #broadcastCover {
-    width: 128px;
-    height: 128px;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0px 0px 1px var(--secondaryShadowColor);
 }
 
-#broadcastInformation>* {
-    display: inline-block;
+#broadcastInformation {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#showDescription {
+    width: 250px;
+}
+
+#showBroadcastSchedule {
+    margin-left: 70px;
+}
+
+#rightBottomContainer {
+    position: fixed;
+    box-shadow: 0px 0px 3px var(--secondaryShadowColor);
+    width: fit-content;
+    height: fit-content;
+    bottom: 60px;
+    right: 0;
+    padding: 0;
+    margin: 15px;
+}
+
+#chatTopBar>h4 {
+    text-align: center;
+    margin: 10px;
+}
+
+#chatSettingButton {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin:0;
+    margin-left: 10px;
+    
+}
+
+#chatFrame {
+   background-color: rgb(255, 255, 255);
+   height: fit-content;
+   width: 250px;
+   padding: 5px;
+
+}
+#chats {
+    height: 200px;
+    width: 200px;
+  
+}
+
+#chatContainer {
+    border-bottom: 1px solid var(--primaryShadowColor);
+}
+
+#upcomingScheduleContainer>h3 {
+    margin-top: 2px;
+    
+}
+#upcomingScheduleContainer {
+    padding: 5px;
+}
+#chatInput {
+    width: 220px;
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid var(--secondaryShadowColor);
+    transition: 200ms;
+}
+
+#chatInput:hover {
+    background-color: var(--navhighlightColor);
+ 
+}
+
+#chatSendButton {
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    transition: 200ms;
+}
+
+#chatSendButton:hover {
+    background-color: var(--navhighlightColor);
+}
+
+#chatSendContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#connections {
+    margin:0;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+    
+    
+}
+#connections>img {
+    width: 45px;
+    height: 45px;
+}
+
+#conCount {
+    font-size: larger;
+    margin: 0;
+}
+
+#volumeContainer>img {
+    width: 35px;
+    height: 35px;
+}
+#volumeContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    margin: 0;
+    margin-left: 10px;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+#volcontrol {
+    margin-left: 10px;
+    
 }

@@ -4,11 +4,12 @@
     <link rel="stylesheet" href="css/root.css">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/index.css">
-    <title>ISMA Radio</title>
+    <link rel="icon" href="img/whitecontrastlogo.png">
+    <title>ISMA Radio - Broadcast</title>
 </head>
 <body>
     <div id="topnav">
-        <a href="/"><img src="img/logo.png" id="logo"></a>
+        <a href="/" id="logoA"><img src="img/logo.png" id="logo"></a>
         <a href="" class="navlink">Schedule</a>
         <a href="" class="navlink">Past Episodes</a>
         <a href="" class="navlink">Contact</a>
@@ -21,10 +22,12 @@
             <div id="broadcastInformation">
                 <div id="broadcastDescriptionContainer">
                     <h2>Description</h2>
-                    <p id="showDescription"></p>
+                    <p id="showDescription">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
                 </div>
                 <div id="showBroadcastSchedule">
-                    <h2>Broadcasts' schedule</h2>
+                    <h2>Broadcasts' Schedule</h2>
                     <div id="broadcastShowtimes"></div>
                 </div>
             </div>
@@ -32,23 +35,34 @@
         <div id="rightBottomContainer">
             <div id="chatContainer">
                 <div id="chatTopBar">
-                    <input type="image" id="chatSettingButton">
+                    <input type="image" id="chatSettingButton" value="" src="img/setting.png">
                     <h4>Live Chat</h4>
                 </div>
                 <div id="chatFrame">
-                    <div i="chats"></div>
+                    <div id="chats"></div>
                     <div id="chatSendContainer">
-                        <input type="text" id="chatInput">
-                        <button id="chatSendButton"></button>
+                        <input type="text" id="chatInput" placeholder="Type here to chat!">
+                        <input type="image" id="chatSendButton" src="img/sendChat.png">
                     </div>
                 </div>
                 
             </div>
             <div id="upcomingScheduleContainer">
-                <h2>Coming Up Next</h2>
+                <h3>Coming Up Next</h2>
             </div>
         </div>
     </div>
-    <div id=bottomControlPanel></div>
+    <div id=bottomControlPanel>
+        <div id="volumeContainer">
+            <img src="img/sound.png">
+            <input type="range" id="volcontrol">
+        </div>
+        <div id="visualization"></div>
+        <div id="MediaControl"></div>
+        <div id="connections">
+            <h5 id="conCount">0</h5>
+            <img src="img/connections.png">
+        </div>
+    </div>
 </body>
 </html>

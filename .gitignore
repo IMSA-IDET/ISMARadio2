@@ -115,3 +115,6 @@ bin
 bin
 .vs
 obj
+
+# Generated audio
+*.wav

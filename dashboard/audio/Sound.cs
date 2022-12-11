@@ -7,11 +7,14 @@ namespace audio
     {
         private Websocket websocket;
         private WaveInEvent waveIn;
+        private WaveFileWriter writer = null;
 
 
         public Sound(Websocket ws)
         {
             websocket = ws;
+
+           
         }
 
         public WaveInCapabilities[] GetDeviceList()
@@ -46,6 +49,12 @@ namespace audio
                 BufferMilliseconds = 2000
             };
 
+            var outputFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test");
+            Directory.CreateDirectory(outputFolder);
+            var outputFilePath = Path.Combine(outputFolder, "test.wav");
+
+            writer = new WaveFileWriter(outputFilePath, waveIn.WaveFormat);
+
             waveIn.DataAvailable += new EventHandler<WaveInEventArgs>(waveInDataHandler);
             waveIn.RecordingStopped += new EventHandler<StoppedEventArgs>(waveInStopHandler);
             waveIn.StartRecording();
@@ -54,13 +63,19 @@ namespace audio
 
             void waveInDataHandler(object? sender, WaveInEventArgs e)
             {
-                byte[] buffer = e.Buffer;
+                byte[] buffer = e.Buffer;//new ArraySegment<byte>(e.Buffer)
+                //writer.Write(e.Buffer, 0, e.BytesRecorded);
+                if (writer.Position > waveIn.WaveFormat.AverageBytesPerSecond * 30)
+                {
+                    waveIn.StopRecording();
+                }
                 websocket.SendSoundData(buffer);
             }
 
             void waveInStopHandler(object? sender, StoppedEventArgs e)
             {
                 waveIn.Dispose();
+                writer.Dispose();
             }
         }
 

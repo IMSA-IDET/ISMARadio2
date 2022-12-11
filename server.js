@@ -2,6 +2,7 @@ import express from "express"
 import http from "http"
 import bodyParser from "body-parser"
 import { WebSocketServer } from "ws";
+import fs from "fs"
 
 // Config
 const PORT = 3001;
@@ -15,9 +16,23 @@ app.use(express.static("public", { extensions: ["html"] }))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // Websocket proxy
+/*wss.on("connection", ws => {
+    ws.on("message", data => {
+        wss.clients.forEach(client =>{
+            client.send(data);
+        });
+    });
+});*/
+
 wss.on("connection", ws => {
     ws.on("message", data => {
         wss.clients.forEach(client =>{
+            let test = new Float32Array(44100 * 2)
+
+            for (let i = 0; i < 44100 * 2; i++) {
+                test[i] = Math.sin(i)
+            }
+
             client.send(data);
         });
     });

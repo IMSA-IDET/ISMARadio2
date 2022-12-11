@@ -3,7 +3,7 @@
 
 console.log(document.getElementsByTagName("button")[0])
 document.getElementsByTagName("button")[0].addEventListener("click", e => {
-    const context = new (window.AudioContext || window.webkitAudioContext)();
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     // Create WebSocket connection.
     const socket = new WebSocket('ws://localhost:3001');
@@ -18,17 +18,13 @@ document.getElementsByTagName("button")[0].addEventListener("click", e => {
         console.log(event.data)
 
         let test = await event.data.arrayBuffer()
-        test = new Int16Array(test)
-        console.log(test[5])
-
-        /*let test = await event.data.arrayBuffer()
-        test = new Int16Array(test)
-        //console.log(test)
-        //playByteArray(event.data, 1)
+        test = new Float32Array(test)
+        console.log(test)
+        
         const myArrayBuffer = audioCtx.createBuffer(
             1,
-            44100 * 2,
-            44100
+            44100,
+            44100 / 2
         );
 
         for (let i = 0; i < myArrayBuffer.length; i++) {
@@ -36,19 +32,10 @@ document.getElementsByTagName("button")[0].addEventListener("click", e => {
         }
 
 
-        /*const source = audioCtx.createBufferSource();
+        const source = audioCtx.createBufferSource();
         source.buffer = myArrayBuffer;
         source.connect(audioCtx.destination);
         source.start();
-
-        audioCtx.decodeAudioData(test, function (buffer) {
-            var source = audioCtx.createBufferSource();
-            source.buffer = buffer;
-            // Connect to the final output node (the speakers)
-            source.connect(audioCtx.destination);
-            // Play immediately
-            source.start(0);
-        });*/
     });
 })
 

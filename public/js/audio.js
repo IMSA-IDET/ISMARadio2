@@ -11,7 +11,7 @@ playBtn.addEventListener("click", _ => {
         // TODO: initiate audio visualization
 
         const context = new (window.AudioContext || window.webkitAudioContext)();
-        const socket = new WebSocket("ws://localhost:3001");
+        const socket = new WebSocket("ws://143.195.43.164:3001");
 
         socket.addEventListener("message", async event => {
             let socketBuffer = await event.data.arrayBuffer();

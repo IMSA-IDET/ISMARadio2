@@ -10,7 +10,7 @@ namespace audio
     {
         static public void Main()
         {
-            Websocket websocket = new Websocket("ws://localhost:3001");
+            Websocket websocket = new Websocket("ws://143.195.43.164:3001");
             Sound sound = new Sound(websocket);
 
             sound.StartRecording(0);

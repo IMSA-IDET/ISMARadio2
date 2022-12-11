@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="/css/index.css">
-    </head>
-    <body>
-        <button>test</button>
-        <script src="/js/audio.js"></script>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>ISMA Radio</title>
+</head>
+<body>
+    <div id="topnav"></div>
+    <div id="centerContainer">
+        <div id="currentPlayingDetails">
+            <h2>Currently Playing</h2>
+            <h3 id="broadcastName">Broadcast Name</h3>
+            <img id="broadcastCover" src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/record.png">
+            <div id="broadcastInformation">
+                <div id="broadcastDescriptionContainer">
+                    <h2>Description</h2>
+                    <p id="showDescription"></p>
+                </div>
+                <div id="showBroadcastSchedule">
+                    <h2>Broadcasts' schedule</h2>
+                    <div id="broadcastShowtimes"></div>
+                </div>
+            </div>
+        </div>
+        <div id="rightBottomContainer">
+            <div id="chatContainer">
+                <div id="chatTopBar">
+                    <input type="image" id="chatSettingButton">
+                    <h4>Live Chat</h4>
+                </div>
+                <div id="chatFrame">
+                    <div i="chats"></div>
+                    <div id="chatSendContainer">
+                        <input type="text" id="chatInput">
+                        <button id="chatSendButton"></button>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="upcoming Schedule"></div>
+        </div>
+    </div>
+    <div id=bottomControlPanel></div>
+</body>
 </html>

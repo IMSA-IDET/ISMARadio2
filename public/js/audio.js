@@ -15,16 +15,16 @@ playBtn.addEventListener("click", _ => {
 
         socket.addEventListener("message", async event => {
             let socketBuffer = await event.data.arrayBuffer();
-            socketBuffer = new Int16Array(socketBuffer);
+            socketBuffer = new Int32Array(socketBuffer);
 
             const audioBuffer = context.createBuffer(
                 1,
-                44100 * 2,
+                44100,
                 44100
             );
 
             for (let i = 0; i < audioBuffer.length; i++) {
-                audioBuffer.getChannelData(0)[i] = socketBuffer[i] / 32767;
+                audioBuffer.getChannelData(0)[i] = socketBuffer[i] / 2147483647//4294967295; // 2^32 / 2 -1
             }
 
             const source = context.createBufferSource();

@@ -43,8 +43,8 @@ namespace audio
             waveIn = new WaveInEvent
             {
                 DeviceNumber = deviceID,
-                WaveFormat = new WaveFormat(rate: 44100, bits: 16, channels: 1),
-                BufferMilliseconds = 2000
+                WaveFormat = new WaveFormat(rate: 44100, bits: 32, channels: 1),
+                BufferMilliseconds = 1000
             };
 
             var outputFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test");

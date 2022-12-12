@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390.63 492.5">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 361.5 451.05">
+ <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="/css/root.css" type="text/css"/>
   <defs>
     <style>
       .cls-1 {
         fill: none;
-        stroke: #000;
+        stroke: var(--iconcolor);
         stroke-miterlimit: 10;
-        stroke-width: 13px;
+        stroke-width: 30px;
       }
     </style>
   </defs>
-  <rect class="cls-1" x="6.5" y="6.5" width="128.22" height="475.99"/>
-  <rect class="cls-1" x="255.91" y="6.5" width="128.22" height="479.5"/>
+  <rect class="cls-1" x="15" y="15" width="112.56" height="421.05"/>
+  <rect class="cls-1" x="233.94" y="15" width="112.56" height="420.93"/>
 </svg>

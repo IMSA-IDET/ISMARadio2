@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
     --bodyBackgroundColor: rgb(5, 5, 5);
 
@@ -11,16 +13,16 @@
     /* widget colors */
     --navColor: rgb(0, 0, 0);
     --secondaryWidgetColor: rgb(4, 4, 4);
-    --navhighlightColor: rgb(36, 23, 40);
-    --iconcolor: #694cca;
+
+    --navhighlightColor: #3a60de;
 
 
-    --iconHighlight: #6c52c4;
+    --iconcolor: #3a60de;
+    --iconHighlight: #3a60de;
 }
 
-@font-face {
-    font-family: Ubuntu;
-    src: url('font/Ubuntu-Regular.ttf')
+* {
+    font-family:  'Poppins', sans-serif;
 }
 
 body {

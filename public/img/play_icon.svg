@@ -10,10 +10,6 @@
         stroke-width: 30px;
         transition: 200ms;
       }
-
-       .cls-1:hover {
-        fill: var(--navhighlightColor)
-      }
     </style>
   </defs>
   <polygon class="cls-1" points="15.73 25.99 367.04 229.33 15.04 431.99 15.73 25.99"/>

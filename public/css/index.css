@@ -11,6 +11,7 @@
 #centerContainer {
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     gap: 50px;
     margin-top: 30px;
 }
@@ -27,19 +28,23 @@
     flex-direction: row;
     align-items: center;
 }
-
-#playingMiddleDivs>div {
-    width: 300px;
-    height: 270px;
-
+#playingMiddleDivs > div{
+    height: 200px;
+}
+#currentName {
+    display: inline;
+    font-weight: 400;
 }
 #albumcover {
     width: 200px;
-    height: 200px;
+    margin: 30px 20px 10px 0;
     border: 1px solid var(--borderColor);
 }
 #Schedule {
-    margin-left: 10px;
+    margin: 30px 10px 10px 20px;
+}
+#Schedule > h3 {
+    margin: 0;
 }
 
 #rightBottomContainer {
@@ -53,22 +58,22 @@
     margin: 15px;
 }
 
-#chatContainer {
-    max-width: 300px;
-}
-
 #chatTopBar {
     height: fit-content;
-}
-
-#chatTitle {
-    text-align: center;
-    margin: 10px 10px 20px 10px;
+    margin: 10px;
 }
 
 #chatSettingButton {
-    position: fixed;
+    display: inline-block;
     cursor: pointer;
+}
+
+#chatTitle {
+    display: inline-block;
+    position: absolute;
+    vertical-align: middle;
+    line-height: 25px;
+    margin-left: 10px;
 }
 
 #chatSettingButton object {
@@ -79,8 +84,9 @@
     border-top: 2px solid var(--borderColor);
     border-bottom: 2px solid var(--borderColor);
     padding: 0 10px 0 10px;
-    max-height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    max-width: 300px;
+    height: 350px;
 }
 
 .chatMessage {
@@ -101,7 +107,7 @@
     justify-content: space-between;
     gap: 20px;
     width: -webkit-fill-available;
-    padding: 20px 10px 0 10px;
+    padding: 10px 10px 0 10px;
 }
 
 #chatInput {
@@ -116,7 +122,7 @@
 }
 
 #chatInput:hover {
-    background-color: var(--navhighlightColor);
+    background-color: rgb(26, 26, 26);
 }
 
 #chatSendButton {
@@ -230,7 +236,22 @@
     margin: 0;
 }
 
-#playToggle {
+#playButton {
+    position: absolute;
+    width: 30px;
+    height: 32px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+#playButtonImage {
     width: 30px;
     margin-right: 20px;
+}
+
+#pauseButtonImage {
+    width: 28px;
+    padding: 1px;
+    margin-right: 20px;
+    display: none;
 }

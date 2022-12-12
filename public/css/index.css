@@ -200,3 +200,15 @@
 #upcomingScheduleContainer {
     user-select: none;
 }
+
+#MediaControl {
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+}
+

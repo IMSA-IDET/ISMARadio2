@@ -8,6 +8,7 @@
         stroke: var(--iconcolor);
         stroke-miterlimit: 10;
         stroke-width: 30px;
+        transition: 200ms;
       }
 
        .cls-1:hover {

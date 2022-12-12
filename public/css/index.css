@@ -1,28 +1,24 @@
 #bottomControlPanel {
     position: fixed;
     bottom: 0;
-    height: 60px;
+    height: 100px;
     width: 100%;
-    box-shadow: 0px -1px 1px var(--primaryShadowColor);
+    box-shadow: 0px -1px 1px var(--borderColor);
     background-color: var(--navColor);
 
 }
 
-#currentPlayingDetails {
-    position: relative;
-    width: fit-content;
-    height: fit-content;
-    margin: 0 auto;
-    margin-top: 10px;
-    padding: 20px;
-    background-color: var(--secondaryWidgetColor);
-    border: 1px solid var(--secondaryShadowColor)
+#centerContainer {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
 }
 
-#currentPlayingDetails>* {
-    width: fit-content;
-    height: fit-content;
-    margin: 0 auto;
+.centerItem {
+    max-width: 500px;
+    border: 1px solid var(--borderColor);
+    padding: 20px;
 }
 
 #broadcastCover {
@@ -30,7 +26,7 @@
     height: 120px;
     margin: 0 auto;
     display: block;
-    box-shadow: 0px 0px 1px var(--secondaryShadowColor);
+    box-shadow: 0px 0px 1px var(--borderColor);
     margin-top: 4px;
 }
 
@@ -52,7 +48,7 @@
 
 #rightBottomContainer {
     position: fixed;
-    border: 1px solid var(--secondaryShadowColor);
+    border: 1px solid var(--borderColor);
     width: fit-content;
     height: fit-content;
     bottom: 60px;
@@ -60,61 +56,55 @@
     padding: 0;
     margin: 15px;
 }
+
 #chatTopBar {
-    user-select: none;
+    height: fit-content;
+    border-bottom: 2px solid var(--borderColor);
 }
-#chatTopBar>h4 {
+
+#chatTitle {
     text-align: center;
-    margin: 10px;
+    margin: 10px 10px 20px 10px;
 }
 
 #chatSettingButton {
     position: fixed;
-    width: 20px;
-    height: 20px;
-    padding: 0;
-    margin:0;
-    margin-left: 10px;
-    
+    cursor: pointer;
 }
 
-#chatFrame {
-   background-color: var(--secondaryWidgetColor);
-   height: fit-content;
-   width: 250px;
-   padding: 5px;
-
-}
-#chats {
-    height: 200px;
-    width: 200px;
-  
+#chatSettingButton object {
+    width: 25px;
 }
 
 #chatContainer {
-    border-bottom: 1px solid var(--primaryShadowColor);
+    padding: 0 10px 0 10px;
 }
 
-#upcomingScheduleContainer>h3 {
-    margin-top: 2px;
+.chatMessage {
+    display: inline;
+}
+
+.chatSender {
+
+}
+
+.chatContent {
     
 }
-#upcomingScheduleContainer {
-    padding: 5px;
-}
+
 #chatInput {
     width: 220px;
     height: 25px;
     border-radius: 5px;
-    border: 1px solid var(--secondaryShadowColor);
+    border: 1px solid var(--borderColor);
     transition: 200ms;
     background-color: var(--bodyBackgroundColor);
-    color: var(--primaryTextColor)
+    color: var(--primaryTextColor);
+    outline: none;
 }
 
 #chatInput:hover {
     background-color: var(--navhighlightColor);
- 
 }
 
 #chatSendButton {
@@ -124,10 +114,6 @@
     transition: 200ms;
 }
 
-#chatSendButton:hover {
-    background-color: var(--navhighlightColor);
-}
-
 #chatSendContainer {
     display: flex;
     flex-direction: row;
@@ -135,7 +121,7 @@
 }
 
 #connections {
-    margin:0;
+    margin: 0;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -143,12 +129,12 @@
     right: 0;
     top: 50%;
     transform: translateY(-50%)
-    
-    
 }
-#connections>img {
-    width: 45px;
-    height: 45px;
+
+#connections>object {
+    width: 22px;
+    margin-left: 10px;
+    margin-right: 30px;
 }
 
 #conCount {
@@ -156,10 +142,6 @@
     margin: 0;
 }
 
-#volumeContainer>img {
-    width: 35px;
-    height: 35px;
-}
 #volumeContainer {
     display: flex;
     flex-direction: row;
@@ -168,9 +150,14 @@
     height: fit-content;
     width: fit-content;
     margin: 0;
-    margin-left: 10px;
+    margin-left: 30px;
     top: 50%;
     transform: translateY(-50%)
+}
+
+#volumeContainer>img {
+    width: 35px;
+    height: 35px;
 }
 
 #volcontrol {
@@ -178,28 +165,32 @@
     background-color: var(--iconcolor);
     margin-left: 10px;
     border-radius: 25px;
-    
-}
-
-#volcontrol:hover {
-    background-color: var(--iconHighlight);
+    height: 8px;
+    background: linear-gradient(to right, var(--iconcolor) 0%, var(--iconcolor) 50%, #000 50%, #000 100%);
+    border: 1px solid var(--iconcolor)
 }
 
 #volcontrol::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%; 
-    background: var(--bodyBackgroundColor);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--iconcolor);
     cursor: pointer;
-  }
-  
+}
 
-  #volicon {
-    width: 35px;
-    
-  }
+#volcontrol:hover::-webkit-slider-thumb {
+    background-color: white;
+    width: 12px;
+    height: 12px;
+}
+
+
+#volicon {
+    width: 25px;
+
+}
 
 #conCount {
     color: var(--iconcolor)

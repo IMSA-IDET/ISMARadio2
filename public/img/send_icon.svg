@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.64 412.21">
+  <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="/css/root.css" type="text/css"/>
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: var(--iconcolor);
+        stroke-miterlimit: 10;
+        stroke-width: 28px;
+      }
+
+      .cls-1:hover {
+        fill: var(--navhighlightColor);
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M16,24.69V179.63H156.52c14.62,0,26.47,11.85,26.47,26.47s-11.85,26.47-26.47,26.47H16v154.94L421.47,206.11,16,24.69Z"/>
+</svg>

@@ -7,6 +7,8 @@ let playClicked = false;
 let context = new (window.AudioContext || window.webkitAudioContext)();
 let socket = new WebSocket(serverURL);
 
+let volume = 1;
+
 playBtn.addEventListener("click", _ => {
     if (!playClicked) {
         playClicked = true;
@@ -28,7 +30,7 @@ playBtn.addEventListener("click", _ => {
 
             for (let i = 0; i < audioBuffer.length; i++) {
                 visualBuffer[i] = socketBuffer[i] / 2147483647; // 2^32 / 2 -1
-                audioBuffer.getChannelData(0)[i] = visualBuffer[i]
+                audioBuffer.getChannelData(0)[i] = visualBuffer[i] * volume;
             }
 
             // TODO: send socketBuffer array to canvas audio visual

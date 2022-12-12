@@ -6,14 +6,13 @@
     
 
     /* shadows */
-    --primaryShadowColor: rgb(28, 28, 28);
-    --secondaryShadowColor: rgb(28, 28, 28);
+    --borderColor: rgb(21, 21, 21);
     
     /* widget colors */
     --navColor: rgb(0, 0, 0);
     --secondaryWidgetColor: rgb(4, 4, 4);
     --navhighlightColor: rgb(36, 23, 40);
-    --iconcolor: #5a3eb5;
+    --iconcolor: #694cca;
    
 
 

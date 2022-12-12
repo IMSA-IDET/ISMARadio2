@@ -31,6 +31,7 @@
     margin: 0 auto;
     display: block;
     box-shadow: 0px 0px 1px var(--secondaryShadowColor);
+    margin-top: 4px;
 }
 
 #broadcastInformation {
@@ -41,6 +42,8 @@
 
 #showDescription {
     width: 250px;
+    overflow: auto;
+    height: 255px;
 }
 
 #showBroadcastSchedule {
@@ -169,11 +172,16 @@
 
 #volcontrol {
     -webkit-appearance: none;
-    background-color: #993FFF;
+    background-color: var(--iconcolor);
     margin-left: 10px;
     border-radius: 25px;
     
 }
+
+#volcontrol:hover {
+    background-color: var(--iconHighlight);
+}
+
 #volcontrol::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -184,3 +192,7 @@
     cursor: pointer;
   }
   
+
+  #volicon {
+    width: 35px;
+  }

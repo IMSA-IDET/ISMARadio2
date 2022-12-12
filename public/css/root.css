@@ -14,6 +14,10 @@
     --secondaryWidgetColor: rgb(4, 4, 4);
     --navhighlightColor: rgb(36, 23, 40);
     --linkBottomBorder: #993FFF;
+
+
+    --iconcolor: #5a3eb5;
+    --iconHighlight: #6c52c4;
 }
 
 @font-face {

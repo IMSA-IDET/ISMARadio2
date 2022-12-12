@@ -107,6 +107,7 @@
     border: 1px solid var(--secondaryShadowColor);
     transition: 200ms;
     background-color: var(--bodyBackgroundColor);
+    color: var(--primaryTextColor)
 }
 
 #chatInput:hover {

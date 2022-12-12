@@ -30,6 +30,5 @@ body {
     padding: 0;
     background-color: var(--bodyBackgroundColor);
     font-family: Ubuntu;
-    user-select: none;
     color: var(--primaryTextColor);
 }

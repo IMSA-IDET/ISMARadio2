@@ -8,6 +8,7 @@
         stroke: var(--iconcolor);
         stroke-miterlimit: 10;
         stroke-width: 28px;
+        cursor: pointer;
       }
 
       .cls-1:hover {

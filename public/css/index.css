@@ -21,29 +21,24 @@
     padding: 20px;
 }
 
-#broadcastCover {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto;
-    display: block;
-    box-shadow: 0px 0px 1px var(--borderColor);
-    margin-top: 4px;
-}
-
-#broadcastInformation {
+#playingMiddleDivs {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
 }
 
-#showDescription {
-    width: 250px;
-    overflow: auto;
-    height: 255px;
-}
+#playingMiddleDivs>div {
+    width: 300px;
+    height: 270px;
 
-#showBroadcastSchedule {
-    margin-left: 70px;
+}
+#albumcover {
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--borderColor);
+}
+#Schedule {
+    margin-left: 10px;
 }
 
 #rightBottomContainer {
@@ -84,13 +79,6 @@
     display: inline;
 }
 
-.chatSender {
-
-}
-
-.chatContent {
-    
-}
 
 #chatInput {
     width: 220px;
@@ -210,5 +198,19 @@
     align-items: center;
     left: 50%;
     transform: translateX(-50%);
+    top: 50%;
+    transform: translateY(-50%);
 }
 
+#currentPlayingDetails>h3 {
+    margin: 0;
+}
+
+#description>h3 {
+    margin: 0;
+}
+
+#playToggle {
+    width: 30px;
+    margin-right: 20px;
+}

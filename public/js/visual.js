@@ -22,9 +22,10 @@ const drawBars = () => {
 
     for (let i = barArray.length - 1; i >= 0; i--) {
         ctx.beginPath();
-        const x = i * (300 / barCount)
-        ctx.moveTo(x, 50 - barArray[i] * 46 - 2);
-        ctx.lineTo(x, 50 + barArray[i] * 46 + 2);
+        const x = i * (300 / barCount);
+        const height = barArray[i] * 46;
+        ctx.moveTo(x, 50 - height - 2);
+        ctx.lineTo(x, 50 + height + 2);
         ctx.stroke();
     }
 }

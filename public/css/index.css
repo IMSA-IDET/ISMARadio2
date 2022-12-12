@@ -232,6 +232,10 @@
     margin: 0;
 }
 
+#description {
+    margin-top: 10px;
+}
+
 #description>h3 {
     margin: 0;
 }

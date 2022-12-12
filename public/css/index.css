@@ -19,6 +19,7 @@
     max-width: 500px;
     border: 1px solid var(--borderColor);
     padding: 20px;
+    position: relative;
 }
 
 #playingMiddleDivs {
@@ -52,9 +53,12 @@
     margin: 15px;
 }
 
+#chatContainer {
+    max-width: 300px;
+}
+
 #chatTopBar {
     height: fit-content;
-    border-bottom: 2px solid var(--borderColor);
 }
 
 #chatTitle {
@@ -71,18 +75,38 @@
     width: 25px;
 }
 
-#chatContainer {
+#chat {
+    border-top: 2px solid var(--borderColor);
+    border-bottom: 2px solid var(--borderColor);
     padding: 0 10px 0 10px;
+    max-height: 500px;
+    overflow-y: scroll;
 }
 
 .chatMessage {
+    margin: 10px 0 10px 0;
+    color: rgb(92, 92, 92);
+}
+
+.chatSender {
     display: inline;
 }
 
+.chatContent {
+    display: inline;
+}
+
+#chatSendContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: -webkit-fill-available;
+    padding: 20px 10px 0 10px;
+}
 
 #chatInput {
-    width: 220px;
-    height: 25px;
+    width: -webkit-fill-available;
+    height: 30px;
     border-radius: 5px;
     border: 1px solid var(--borderColor);
     transition: 200ms;
@@ -96,16 +120,12 @@
 }
 
 #chatSendButton {
-    width: 25px;
-    height: 25px;
-    margin-left: 5px;
-    transition: 200ms;
+    cursor: pointer;
 }
 
-#chatSendContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+#chatSendButton object {
+    width: 30px;
+    transition: 200ms;
 }
 
 #connections {

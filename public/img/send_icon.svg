@@ -9,6 +9,7 @@
         stroke-miterlimit: 10;
         stroke-width: 28px;
         transition: 200ms;
+        cursor: pointer;
       }
 
       .cls-1:hover {

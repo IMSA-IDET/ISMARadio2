@@ -4,7 +4,7 @@
   <defs>
     <style>
       .cls-1 {
-        fill: var(--linkBottomBorder);
+        fill: var(--iconcolor);
       }
     </style>
   </defs>

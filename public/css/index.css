@@ -60,7 +60,9 @@
     padding: 0;
     margin: 15px;
 }
-
+#chatTopBar {
+    user-select: none;
+}
 #chatTopBar>h4 {
     text-align: center;
     margin: 10px;
@@ -196,4 +198,14 @@
 
   #volicon {
     width: 35px;
+    
   }
+
+#conCount {
+    color: var(--iconcolor)
+}
+
+
+#upcomingScheduleContainer {
+    user-select: none;
+}

@@ -7,9 +7,8 @@ let volumeSlider = document.getElementById("volcontrol");
 volumeSlider.value = parseInt(localStorage.getItem("volume"));
 
 const setVolume = () => {
-    console.log("Test")
     volumeSlider.style.background = `linear-gradient(to right, var(--iconcolor) 0%, var(--iconcolor) ${volumeSlider.value}%, #000 ${volumeSlider.value}%, #000 100%)`;
-    volume = volumeSlider.value;
+    volume = volumeSlider.value / 100;
     localStorage.setItem("volume", volume);
 }
 

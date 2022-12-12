@@ -18,7 +18,8 @@
     </div>
     <div id="centerContainer">
         <div id="currentPlayingDetails" class="centerItem">
-            <h3>Currently Playing: <div id="currentName">Show Name Here</div></h3>
+            <h3>Currently Playing: <div id="currentName">Show Name Here</div>
+            </h3>
             <div id="playingMiddleDivs">
                 <img id="albumcover"
                     src="https://media.npr.org/assets/img/2013/04/22/dark-side_sq-1da3a0a7b934f431c175c91396a1606b3adf5c83-s1100-c50.jpg"
@@ -26,8 +27,8 @@
                 <div id="Schedule">
                     <h3>Schedule</h3>
                     <div>
-                       <h5 class="showScheduleTime"><b>Monday</b>&nbsp;&nbsp;12:00 pm - 2:00 pm</h5>
-                       <h5 class="showScheduleTime"><b>Wednesday</b>&nbsp;&nbsp;11:00 am - 2:00 pm</h5>
+                        <h5 class="showScheduleTime"><b>Monday</b>&nbsp;&nbsp;12:00 pm - 2:00 pm</h5>
+                        <h5 class="showScheduleTime"><b>Wednesday</b>&nbsp;&nbsp;11:00 am - 2:00 pm</h5>
                     </div>
                 </div>
             </div>
@@ -45,8 +46,10 @@
         <div id="upcomingScheduleContainer" class="centerItem">
             <div>Coming Up Next</div>
             <h5 id="nextTimeSlot">12:00 pm- 2:00 pm</h3>
-            <h4 id="upnextName">Show Name</h4>
-            <img id='upnextcover' src="http://cdn.cnn.com/cnnnext/dam/assets/210326104449-02-rizzoli-album-art-covers-restricted.jpg" alt="" >
+                <h4 id="upnextName">Show Name</h4>
+                <img id='upnextcover'
+                    src="http://cdn.cnn.com/cnnnext/dam/assets/210326104449-02-rizzoli-album-art-covers-restricted.jpg"
+                    alt="">
         </div>
         <div id="chatContainer" class="centerItem">
             <div id="chatTopBar">
@@ -74,12 +77,14 @@
             <object data="img/volume_icon.svg" id="volicon"> </object>
             <input type="range" id="volcontrol">
         </div>
-        <div id="visualization"></div>
         <div id="MediaControl">
             <object id="playButtonImage" data="img/play_icon.svg"></object>
             <object id="pauseButtonImage" data="img/pause_icon.svg"></object>
             <div id="playButton"></div>
-            <h3>00:00:00</h3>
+            <div id="visual">
+                <canvas id="visualCanvas" width="300" height="100"></canvas>
+                <div>00:00:00</div>
+            </div>
         </div>
         <div id="connections">
             <h5 id="conCount">0</h5>
@@ -87,6 +92,7 @@
         </div>
     </div>
     <script src="js/index.js"></script>
+    <script src="js/visual.js"></script>
     <script src="js/audio.js"></script>
 </body>
 

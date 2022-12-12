@@ -1,4 +1,3 @@
-// Config
 const serverURL = `ws://${window.location.hostname}:${window.location.port}/stream`;
 
 const playBtn = document.getElementById("playButton");
@@ -46,7 +45,13 @@ socket.addEventListener("message", async event => {
             audioBuffer.getChannelData(0)[i] = visualBuffer[i] * volume;
         }
 
-        // TODO: send socketBuffer array to canvas audio visual
+        for (let i = 0; i < bufferVisualRate; i++) {
+            const start = i * (visualBuffer.length / bufferVisualRate);
+            setTimeout(() => {
+                bufferToArray(visualBuffer, start);
+                drawBars();
+            }, (start / 44100) * 1000);
+        }
 
         const source = context.createBufferSource();
         source.buffer = audioBuffer;

@@ -222,16 +222,25 @@
     align-items: center;
 }
 #MediaControl {
-    position: absolute;
     height: fit-content;
     width: fit-content;
     display: flex;
     flex-direction: row;
     align-items: center;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50%;
-    transform: translateY(-50%);
+    margin: auto;
+}
+
+#visual {
+    background-color: var(--iconcolor);
+    margin-right: 20px;
+}
+
+#visual > div {
+    position: absolute;
+    bottom: 0px;
+    font-weight: 700;
+    width: 300px;
+    text-align: center;
 }
 
 #currentPlayingDetails>h3 {

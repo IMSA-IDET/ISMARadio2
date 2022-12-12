@@ -3,20 +3,18 @@
 
     /* text colors*/
     --primaryTextColor: #fff;
-    
+
 
     /* shadows */
     --borderColor: rgb(21, 21, 21);
-    
+
     /* widget colors */
     --navColor: rgb(0, 0, 0);
     --secondaryWidgetColor: rgb(4, 4, 4);
     --navhighlightColor: rgb(36, 23, 40);
     --iconcolor: #694cca;
-   
 
 
-    
     --iconHighlight: #6c52c4;
 }
 
@@ -33,3 +31,19 @@ body {
     color: var(--primaryTextColor);
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgb(26, 26, 26);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: rgb(46, 46, 46);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(55, 55, 55);
+}

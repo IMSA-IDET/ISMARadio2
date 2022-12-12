@@ -1,7 +1,17 @@
+if (localStorage.getItem("volume") == null) {
+    localStorage.setItem("volume", 1);
+}
 
 // Volume slider lower range background
 let volumeSlider = document.getElementById("volcontrol");
-volumeSlider.addEventListener("input", e => {
+volumeSlider.value = parseInt(localStorage.getItem("volume"));
+
+const setVolume = () => {
+    console.log("Test")
     volumeSlider.style.background = `linear-gradient(to right, var(--iconcolor) 0%, var(--iconcolor) ${volumeSlider.value}%, #000 ${volumeSlider.value}%, #000 100%)`;
     volume = volumeSlider.value;
-});
+    localStorage.setItem("volume", volume);
+}
+
+setVolume();
+volumeSlider.addEventListener("input", () => setVolume());

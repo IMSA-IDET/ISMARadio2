@@ -10,7 +10,7 @@ const PORT = 3001;
 // App Setup
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server: server });
+const wss = new WebSocketServer({ server: server, path: "/stream" });
 
 app.use(express.static("public", { extensions: ["html"] }));
 app.use(bodyParser.urlencoded({ extended: true }));

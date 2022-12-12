@@ -1,5 +1,5 @@
 // Config
-const serverURL = "ws://localhost:3001";
+const serverURL = `ws://${window.location.hostname}:${window.location.port}/stream`;
 
 const playBtn = document.getElementById("playButton");
 const playBtnImage = document.getElementById("playButtonImage");

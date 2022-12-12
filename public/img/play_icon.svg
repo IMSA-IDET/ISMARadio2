@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 397.05 457.96">
+ <link xmlns="http://www.w3.org/1999/xhtml" rel="stylesheet" href="/css/root.css" type="text/css"/>
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: var(--iconcolor);
+        stroke-miterlimit: 10;
+        stroke-width: 30px;
+      }
+
+       .cls-1:hover {
+        fill: var(--navhighlightColor)
+      }
+    </style>
+  </defs>
+  <polygon class="cls-1" points="15.73 25.99 367.04 229.33 15.04 431.99 15.73 25.99"/>
+</svg>

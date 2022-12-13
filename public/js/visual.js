@@ -1,11 +1,13 @@
 // Config
 const bufferSize = 44100;
-const bufferVisualRate = 64; // 4 bars per buffer
+const bufferVisualRate = 32; // 4 bars per buffer
 const barCount = bufferVisualRate * 2;
 
 const canvas = document.getElementById("visualCanvas");
 const ctx = canvas.getContext("2d");
-ctx.strokeStyle = "#FFF";
+
+ctx.strokeStyle = "#000";
+ctx.lineWidth = 300 / barCount;
 
 let barArray = [];
 

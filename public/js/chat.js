@@ -1,9 +1,14 @@
-const chatServerUrl = `ws://${window.location.hostname}:${window.location.port}/?path=chat`;
+const chatServerURL = `ws://${window.location.hostname}:${window.location.port}/?path=chat`;
+let chatSocket = new WebSocket(chatServerURL);
+
+if (localStorage.getItem("username") == null) {
+    localStorage.setItem("username", "user" + Math.floor(Math.random() * 10000));
+}
 
 const getColorFromName = name => {
     let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-        hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    for (let i = 0; i < name.length; i++) {
+        hash = name.charCodeAt(i) + ((hash << 5) - hash);
     }
 
     let color = "#";
@@ -11,37 +16,48 @@ const getColorFromName = name => {
         let value = (hash >> (i * 8)) & 0xFF;
         color += ("00" + value.toString(16)).substr(-2);
     }
-    
+
     return color;
 }
-let serversocket = new WebSocket(chatServerUrl);
 
+const renderMessage = (username, message) => {
+    const container = document.createElement("div");
+    container.classList.add("chatMessage");
 
-function sendChatMessage(username, message) {
-    const container = document.createElement("div"); container.classList.add("chatMessage");
-    const name = document.createElement("div"); name.classList.add("chatSender");
-    container.append(name)
-    const msg = document.createElement("div"); msg.classList.add("chatContent")
-    container.append(msg)
+    const name = document.createElement("div");
     name.innerText = username + ": ";
-    msg.innerText = message;
-    name.style.color = randomNameColor
-    document.getElementById("chat").append(container)
+    name.style.color = getColorFromName(username);
+    name.classList.add("chatSender");
+    container.append(name);
 
+    const content = document.createElement("div");
+    content.classList.add("chatContent");
+    content.innerText = message;
+    container.append(content);
+
+    document.getElementById("chat").append(container);
 }
 
-serversocket.addEventListener("message", async event => {
-    var data = await event.data.text()
-    var jsondata = JSON.parse(data)
-    sendChatMessage(jsondata.name, jsondata.message)
-})
+chatSocket.addEventListener("message", async event => {
+    const data = await event.data.text();
+    const json = JSON.parse(data);
 
-const sendmessageHandle = () => {
-    if (document.getElementById("chatInput").value == "") return false
-    serversocket.send(JSON.stringify({ "name": "joe biben", "message": document.getElementById("chatInput").value }))
-    document.getElementById("chatInput").value = ""
+    renderMessage(json.name, json.message);
+});
+
+const sendMessageHandler = () => {
+    const input = document.getElementById("chatInput");
+    if (input.value == "") {
+        return false;
+    }
+
+    chatSocket.send(JSON.stringify({
+        "name": localStorage.getItem("username"),
+        "message": input.value
+    }));
+
+    document.getElementById("chatInput").value = "";
 }
-document.getElementById("msgsend").addEventListener("click", sendmessageHandle);
 
-
-document.onkeyup = (key) => { if (key.key == "Enter") sendmessageHandle(); }
+document.getElementById("msgsend").addEventListener("click", sendMessageHandler);
+document.onkeyup = (key) => {if (key.key == "Enter") sendMessageHandler() }

@@ -1,4 +1,4 @@
-const serverURL = `ws://${window.location.hostname}:${window.location.port}/stream`;
+const audioServerURL = `ws://${window.location.hostname}:${window.location.port}/?path=stream`;
 
 const playBtn = document.getElementById("playButton");
 const playBtnImage = document.getElementById("playButtonImage");
@@ -7,7 +7,7 @@ const pauseBtnImage = document.getElementById("pauseButtonImage");
 let playClicked = false;
 
 let context = null;
-let socket = new WebSocket(serverURL);
+let audioSocket = new WebSocket(audioServerURL);
 
 let volume = 1;
 
@@ -27,7 +27,7 @@ playBtn.addEventListener("click", () => {
     }
 })
 
-socket.addEventListener("message", async event => {
+audioSocket.addEventListener("message", async event => {
     if (playClicked) {
         let socketBuffer = await event.data.arrayBuffer();
         socketBuffer = new Int32Array(socketBuffer);

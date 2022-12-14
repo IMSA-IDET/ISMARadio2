@@ -1,4 +1,4 @@
-import express from "express"
+import express, { json } from "express"
 import http from "http"
 import bodyParser from "body-parser"
 import { WebSocketServer } from "ws"
@@ -33,6 +33,7 @@ wss.on("connection", async (ws, req) => {
             ws.on("message", data => {
                 wss.clients.forEach(client => {
                     client.send(data);
+                 
                 });
             });
     }

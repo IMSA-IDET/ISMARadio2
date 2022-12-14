@@ -1,4 +1,4 @@
-const chatServerUrl = `ws://${window.location.hostname}:${window.location.port}/livechat`;
+const chatServerUrl = `ws://${window.location.hostname}:${window.location.port}/?path=chat`;
 
 const randomNameColor = Math.floor(Math.random()*16777215).toString(16);
 let serversocket = new WebSocket(chatServerUrl);
@@ -18,8 +18,10 @@ function sendChatMessage(username, message) {
 }
 
 serversocket.addEventListener("message", async event => {
-content = JSON.parse(event.data)
-sendChatMessage(content.name, content.message)
+    var data = await event.data.text()
+    var jsondata = JSON.parse(data)
 })
 
-
+document.getElementById('msgsend').onclick = ()=>{
+    serversocket.send(JSON.stringify({'name':"joe biben","message": "fortnite"}))
+}

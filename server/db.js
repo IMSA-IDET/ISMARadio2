@@ -1,26 +1,39 @@
-import exp from "constants";
 import fs from "fs"
 
-export const GetPassword = (password)=> {
-    return true
-    fs.readFile("db/auth.json", (data) => {
-        const passwords = JSON.parse(data);
-
-        passwords.forEach(obj => {
-            if (obj.password != password) {
-                return false;
+export const GetPassword = (password) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile("./server/db/auth.json", "utf8", (err, data) => {
+            if (err) {
+                throw err;
             }
-
-            const date = new Date();
-            if (obj.time.day != date.getDay()) {
-                return false;
+    
+            const passwords = JSON.parse(data);
+    
+            for (let i = 0; i < passwords.length; i++) {
+                if (passwords[i].password == password) {
+                    if (checkDate(passwords[i].time)) {
+                        resolve(true);
+                    }
+                }
             }
-
-            if (obj.time.day != date.getDay()) {
-                return false;
-            }
-
-            return true;
+    
+            resolve(false);
         });
-    })
+    });
+}
+
+const checkDate = (dateObj) => {
+    const date = new Date();
+    const day = date.getDay();
+    const hour = date.getHours() + (date.getMinutes() + date.getSeconds() / 60) / 60;
+
+    if (date.getDay() == day) {
+        return true;
+    }
+
+    if (dateObj.start <= hour && hour <= dateObj.end) {
+        return true;
+    }
+
+    return false;
 }

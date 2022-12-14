@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Show name here",
+        "description": "Lorem ipsum dolor sit amet",
+        "cover": "img/covers/test.png",
+        "schedule": [
+            {
+                "day": 0,
+                "start": 18.5,
+                "end": 19
+            }
+        ],
+        "episodes": [
+            {
+                "title": "Cool episode title",
+                "file": "recordings/show_name_here/0.wav"
+            }
+        ]
+    }
+]

@@ -118,3 +118,6 @@ obj
 
 # Generated audio
 *.wav
+
+# Authentication credentials
+auth.json

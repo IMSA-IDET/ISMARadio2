@@ -6,13 +6,20 @@ export const GetPassword = (password) => {
         const passwords = JSON.parse(data);
 
         passwords.forEach(obj => {
-            if (obj.password == password) {
-                const date = new Date();
-                let day = date.getDay()
-                if (obj.time.day == day) {
-
-                }
+            if (obj.password != password) {
+                return false;
             }
+
+            const date = new Date();
+            if (obj.time.day != date.getDay()) {
+                return false;
+            }
+
+            if (obj.time.day != date.getDay()) {
+                return false;
+            }
+
+            return true;
         });
     })
 }

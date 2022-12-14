@@ -14,7 +14,7 @@ function sendChatMessage(username, message) {
     msg.innerText = message;
     name.style.color = randomNameColor
     document.getElementById('chat').append(container)
-    console.log(username, message)
+
 }
 
 serversocket.addEventListener("message", async event => {

@@ -12,6 +12,7 @@ const PORT = 3001;
 const app = express();
 const server = http.createServer(app);
 const streamServer = new WebSocketServer({ server: server, path: "/stream" });
+const chatSocket = new WebSocketServer({ server: server, path: "/livechat" });
 
 app.use(express.static("public", { extensions: ["html"] }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,8 +28,19 @@ streamServer.on("connection", async (ws, req) => {
         });
     }
 });
-
 //Start server listening
+
+//chat socket
+chatSocket.on('connection', (ws,req)=> {
+    ws.on('message', data=>{
+        chatSocket.clients.forEach(client=>{
+            client.send(data)
+        })
+    })
+    
+})
+
+
 server.listen(PORT, () => {
     console.log("Server listening on port:", PORT);
 });

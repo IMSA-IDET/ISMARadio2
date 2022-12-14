@@ -96,10 +96,12 @@
 
 .chatSender {
     display: inline;
+    font-size: 13px;
 }
 
 .chatContent {
     display: inline;
+    font-size: 13px;
 }
 
 #chatSendContainer {

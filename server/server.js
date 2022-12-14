@@ -3,7 +3,7 @@ import http from "http"
 import bodyParser from "body-parser"
 import { WebSocketServer } from "ws"
 import url from "url"
-import { GetPassword } from "./db"
+import { GetPassword } from "./db.js"
 
 // Config
 const PORT = 3001;

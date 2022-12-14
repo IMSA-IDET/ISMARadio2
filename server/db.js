@@ -1,6 +1,7 @@
+import exp from "constants";
 import fs from "fs"
 
-export const GetPassword = (password) => {
+export const GetPassword = (password)=> {
     return true
     fs.readFile("db/auth.json", (data) => {
         const passwords = JSON.parse(data);

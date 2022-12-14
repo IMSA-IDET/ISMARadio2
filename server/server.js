@@ -9,17 +9,17 @@ const PORT = 3001;
 // App Setup
 const app = express();
 const server = http.createServer(app);
-const wss = new WebSocketServer({ server: server, path: "/stream" });
+const streamServer = new WebSocketServer({ server: server, path: "/stream" });
 
 app.use(express.static("public", { extensions: ["html"] }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Websocket proxy
-wss.on("connection", ws => {
+streamServer.on("connection", ws => {
     const parameters = url.parse(req.url, true);
     if (GetPassword(parameters.query.password)) {
         ws.on("message", data => {
-            wss.clients.forEach(client => {
+            streamServer.clients.forEach(client => {
                 client.send(data);
             });
         });

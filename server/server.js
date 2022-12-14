@@ -15,7 +15,7 @@ app.use(express.static("public", { extensions: ["html"] }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Websocket proxy
-streamServer.on("connection", ws => {
+streamServer.on("connection", (ws, req) => {
     const parameters = url.parse(req.url, true);
     if (GetPassword(parameters.query.password)) {
         ws.on("message", data => {

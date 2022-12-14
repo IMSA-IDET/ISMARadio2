@@ -6,8 +6,8 @@ const barCount = bufferVisualRate * 2;
 const canvas = document.getElementById("visualCanvas");
 const ctx = canvas.getContext("2d");
 
-ctx.strokeStyle = "#000";
-ctx.lineWidth = 300 / barCount;
+ctx.strokeStyle = "#3a60de";
+ctx.lineWidth = 200 / barCount;
 
 let barArray = [];
 

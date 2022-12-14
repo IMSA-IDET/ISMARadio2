@@ -20,8 +20,15 @@ function sendChatMessage(username, message) {
 serversocket.addEventListener("message", async event => {
     var data = await event.data.text()
     var jsondata = JSON.parse(data)
+    sendChatMessage(jsondata.name,jsondata.message)
 })
 
-document.getElementById('msgsend').onclick = ()=>{
-    serversocket.send(JSON.stringify({'name':"joe biben","message": "fortnite"}))
+const sendmessageHandle = ()=>{
+    if (document.getElementById('chatInput').value == "") return false
+    serversocket.send(JSON.stringify({'name':"joe biben","message": document.getElementById('chatInput').value}))
+    document.getElementById('chatInput').value = ""
 }
+document.getElementById('msgsend').onclick = sendmessageHandle
+
+
+document.onkeyup = (key)=>{ if (key.key == "Enter") sendmessageHandle();}

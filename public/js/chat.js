@@ -28,7 +28,7 @@ const sendmessageHandle = ()=>{
     serversocket.send(JSON.stringify({'name':"joe biben","message": document.getElementById('chatInput').value}))
     document.getElementById('chatInput').value = ""
 }
-document.getElementById('msgsend').onclick = sendmessageHandle
+document.getElementById('msgsend').addEventListener("click", sendmessageHandle);
 
 
 document.onkeyup = (key)=>{ if (key.key == "Enter") sendmessageHandle();}

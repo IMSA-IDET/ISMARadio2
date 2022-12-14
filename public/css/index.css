@@ -300,3 +300,8 @@
     margin: 0;
     margin-top: 20px;
 }
+
+#msgsend {
+    width: 45px;
+    height: 45px;
+}

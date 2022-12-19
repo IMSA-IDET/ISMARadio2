@@ -1,6 +1,3 @@
-const chatServerURL = `ws://${window.location.hostname}:${window.location.port}/?path=chat`;
-let chatSocket = new WebSocket(chatServerURL);
-
 if (localStorage.getItem("username") == null) {
     localStorage.setItem("username", "user" + Math.floor(Math.random() * 10000));
 }
@@ -38,12 +35,10 @@ const renderMessage = (username, message) => {
     document.getElementById("chat").append(container);
 }
 
-chatSocket.addEventListener("message", async event => {
-    const data = await event.data.text();
+const chatMessage = async data => {
     const json = JSON.parse(data);
-
     renderMessage(json.name, json.message);
-});
+}
 
 const sendMessageHandler = () => {
     const input = document.getElementById("chatInput");
@@ -51,7 +46,7 @@ const sendMessageHandler = () => {
         return false;
     }
 
-    chatSocket.send(JSON.stringify({
+    server.send(JSON.stringify({
         "name": localStorage.getItem("username"),
         "message": input.value
     }));

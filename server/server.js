@@ -3,7 +3,7 @@ import http from "http"
 import bodyParser from "body-parser"
 import { WebSocketServer } from "ws"
 import url from "url"
-import { GetPassword } from "./db.js"
+import { GetPassword, GetSchedule } from "./db.js"
 
 // Config
 const PORT = 3001;
@@ -15,6 +15,19 @@ const wss = new WebSocketServer({ server: server });
 
 app.use(express.static("public", { extensions: ["html"] }));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Info
+let schedule;
+let currentListeners = 0;
+
+const scheduleLookUp = async () => {
+    schedule = await GetSchedule();
+    wss.clients.forEach(client => {
+        client.send(JSON.stringify(schedule));
+    });
+    setTimeout(() => scheduleLookUp(), schedule.timeout);
+}
+scheduleLookUp();
 
 // Websocket proxy
 wss.on("connection", async (ws, req) => {
@@ -39,9 +52,10 @@ wss.on("connection", async (ws, req) => {
             });
         });
     }
+});
 
-    // TODO: set current schedule
-    // TODO: send new schedule
+app.get("/schedule", (req, res) => {
+    req.json(schedule);
 });
 
 //Start server listening

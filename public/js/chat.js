@@ -1,3 +1,5 @@
+const MAX_CHAT_ELEMENTS = 100;
+
 if (localStorage.getItem("username") == null) {
     localStorage.setItem("username", "user" + Math.floor(Math.random() * 10000));
 }
@@ -32,7 +34,12 @@ const renderMessage = (username, message) => {
     content.innerText = message;
     container.append(content);
 
-    document.getElementById("chat").append(container);
+    const chat = document.getElementById("chat");
+    chat.prepend(container);
+    if (chat.children.length > MAX_CHAT_ELEMENTS) {
+        chat.children[chat.children.length - 1].remove();
+    }
+    chat.scrollTop = chat.scrollHeight;
 }
 
 const chatMessage = async data => {

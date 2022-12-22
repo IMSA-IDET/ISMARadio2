@@ -85,8 +85,11 @@
     border-bottom: 2px solid var(--borderColor);
     padding: 0 10px 0 10px;
     overflow-y: auto;
-    max-width: 300px;
+    overflow-wrap: break-word;
+    width: 300px;
     height: 350px;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .chatMessage {

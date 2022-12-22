@@ -53,19 +53,24 @@ export const GetSchedule = () => {
             shows.forEach(show => {
                 show.schedule.forEach(time => {
                     const showRank = checkDate(time);
-                    if (showRank > 0) {
-                        next.forEach((obj, i) => {
-                            if (showRank < obj.rank) {
+                    if (showRank != 0) {
+                        for (let i = 0; i < 3; i++) {
+                            if (showRank < next[i].rank) {
+                                const adjustedShow = JSON.parse(JSON.stringify(show));
+                                adjustedShow.schedule = time;
+                                
                                 next.splice(i, 0, {
                                     rank: showRank,
-                                    show: show
+                                    show: adjustedShow
                                 });
-
+                                
                                 if (next.length > 3) {
                                     next.pop();
                                 }
+
+                                i = 3;
                             }
-                        });
+                        }
                     }
                 });
             });

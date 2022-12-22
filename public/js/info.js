@@ -13,12 +13,33 @@ const infoHandler = info => {
         scheduleContainer.append(date);
     });
 
+    const nextContainer = document.getElementById("nextContainer");
+    nextContainer.textContent = "";
     info.next.forEach(next => {
         if (next.rank == 999) {
             return
         }
         
-        const date = document.createElement("h5");
+        const nextItem = document.createElement("div");
+        nextItem.classList.add("nextItem");
+
+        const nextTimeSlot = document.createElement("h5");
+        nextTimeSlot.classList.add("nextTimeSlot");
+        const time = next.show.schedule;
+        nextTimeSlot.innerHTML = `<b>${numberToDay(time.day)}</b>&nbsp;&nbsp;${numberToTime(time.start)} - ${numberToTime(time.end)}`;
+        nextItem.append(nextTimeSlot);
+
+        const nextName = document.createElement("h4");
+        nextName.classList.add("upnextName");
+        nextName.innerHTML = next.show.name;
+        nextItem.append(nextName);
+
+        const nextCover = document.createElement("img");
+        nextCover.classList.add("upnextcover");
+        nextCover.src = next.show.cover;
+        nextItem.append(nextCover);
+
+        nextContainer.append(nextItem);
     });
 }
 

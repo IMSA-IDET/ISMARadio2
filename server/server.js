@@ -55,6 +55,13 @@ wss.on("connection", async (ws, req) => {
             });
         });
     }
+
+    wss.clients.forEach(client => {
+        client.send(JSON.stringify({
+            "route": "listeners",
+            "data": wss.clients.size - 1
+        }));
+    });
 });
 
 app.get("/schedule", (req, res) => {

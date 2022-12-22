@@ -15,5 +15,7 @@ server.addEventListener("message", event => {
         case "info":
             infoMessage(json.data);
             break;
+        case "listeners":
+            listenersMessage(json.data);
     }
 });

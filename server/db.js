@@ -39,7 +39,9 @@ export const GetSchedule = () => {
                 show.schedule.forEach(time => {
                     if (checkDate(time) === 0) {
                         current = show;
-                        timeout = time.end;
+                        const date = new Date();
+                        const currentHour = (date.getHours() * 60 + date.getMinutes()) * 60 + date.getSeconds();
+                        timeout = (time.end * 60 * 60 - currentHour) * 1000;
                     }
                 });
             });

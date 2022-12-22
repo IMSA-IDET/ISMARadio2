@@ -2,7 +2,7 @@ const serverURL = `ws://${window.location.hostname}:${window.location.port}`;
 
 let server = new WebSocket(serverURL);
 
-server.addEventListener("message", async event => {
+server.addEventListener("message", event => {
     const json = JSON.parse(event.data);
 
     switch(json.route) {

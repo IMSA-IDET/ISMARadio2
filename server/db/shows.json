@@ -2,12 +2,30 @@
     {
         "name": "Show name here",
         "description": "Lorem ipsum dolor sit amet",
-        "cover": "img/covers/test.png",
+        "cover": "img/pause.png",
         "schedule": [
             {
-                "day": 0,
-                "start": 18.5,
+                "day": 3,
+                "start": 17,
                 "end": 19
+            }
+        ],
+        "episodes": [
+            {
+                "title": "Cool episode title",
+                "file": "recordings/show_name_here/0.wav"
+            }
+        ]
+    },
+    {
+        "name": "Shofdsgsdfadsfdsfsdfsdw name here",
+        "description": "Lorem ipsum dofsdfsdfsdfsdfsdflor sit amet",
+        "cover": "img/play.png",
+        "schedule": [
+            {
+                "day": 3,
+                "start": 19,
+                "end": 21
             }
         ],
         "episodes": [

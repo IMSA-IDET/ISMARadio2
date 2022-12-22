@@ -215,13 +215,7 @@
 
 #upcomingScheduleContainer {
     display: inline-block;
-    user-select: none;
-    
-}
-#upcomingScheduleContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 200px;
 }
 #MediaControl {
     height: fit-content;
@@ -246,6 +240,7 @@
 
 #currentPlayingDetails>h3 {
     margin: 0;
+    font-size: 20px;
 }
 
 #description {
@@ -280,18 +275,17 @@
     color: var(--iconcolor);
 }
 
-#upnextcover {
+.upnextcover {
     width: 80px;
     height: 80px;
-
-    
-}
-
-#upnextName {
     margin: 5px;
 }
 
-#nextTimeSlot {
+.upnextName {
+    margin: 5px;
+}
+
+.nextTimeSlot {
     margin: 5px;
 }
 
@@ -312,4 +306,20 @@
 
 #msgsendImage {
     width: 30px;
+}
+
+#nextTitle {
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#nextContainer {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+}
+
+.nextItem {
+    
 }

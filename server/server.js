@@ -23,7 +23,10 @@ let currentListeners = 0;
 const scheduleLookUp = async () => {
     schedule = await GetSchedule();
     wss.clients.forEach(client => {
-        client.send(JSON.stringify(schedule));
+        client.send(JSON.stringify({
+            "route": "info",
+            "data": schedule
+        }));
     });
     setTimeout(() => scheduleLookUp(), schedule.timeout);
 }
@@ -55,7 +58,7 @@ wss.on("connection", async (ws, req) => {
 });
 
 app.get("/schedule", (req, res) => {
-    req.json(schedule);
+    res.json(schedule);
 });
 
 //Start server listening

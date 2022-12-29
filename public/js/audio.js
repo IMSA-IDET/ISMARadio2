@@ -23,7 +23,6 @@ playBtn.addEventListener("click", () => {
 })
 
 const audioMessage = async data => {
-    console.log(data)
     if (playClicked) {
         let socketBuffer = await data.arrayBuffer();
         socketBuffer = new Int32Array(socketBuffer);

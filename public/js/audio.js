@@ -1,10 +1,13 @@
 const playBtn = document.getElementById("playButton");
 const playBtnImage = document.getElementById("playButtonImage");
 const pauseBtnImage = document.getElementById("pauseButtonImage");
+const streamStatus = document.getElementById("streamStatus");
+const streamStart = document.getElementById("streamStart");
 
 let playClicked = false;
 let context = null;
 let volume = 1;
+let lastBufferTimestamp = Date.now();
 
 playBtn.addEventListener("click", () => {
     if (!playClicked) {
@@ -14,6 +17,12 @@ playBtn.addEventListener("click", () => {
 
         playBtnImage.style.display = "none";
         pauseBtnImage.style.display = "block";
+
+        streamStatus.innerHTML = "";
+        streamStart.style.display = "block";
+
+        lastBufferTimestamp = Date.now();
+        setTimeout(() => checkIfLive(), 1200);
     } else {
         playClicked = false;
 
@@ -52,5 +61,22 @@ const audioMessage = async data => {
         source.buffer = audioBuffer;
         source.connect(context.destination);
         source.start();
+
+        lastBufferTimestamp = Date.now();
+        setTimeout(() => checkIfLive(), 1200);
+    }
+}
+
+const checkIfLive = () => {
+    // Max timeout: 500ms
+    // Overhead: 200ms
+    if (Date.now() - lastBufferTimestamp > 700) {
+        streamStatus.style.color = "red";
+        streamStatus.innerHTML = "Radio stream offline";
+        streamStart.style.display = "none";
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    } else {
+        streamStatus.innerHTML = "";
+        streamStart.style.display = "block";
     }
 }

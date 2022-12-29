@@ -22,7 +22,7 @@ playBtn.addEventListener("click", () => {
         streamStart.style.display = "block";
 
         lastBufferTimestamp = Date.now();
-        setTimeout(() => checkIfLive(), 1200);
+        setTimeout(() => checkIfLive(), 1500);
     } else {
         playClicked = false;
 
@@ -63,20 +63,23 @@ const audioMessage = async data => {
         source.start();
 
         lastBufferTimestamp = Date.now();
-        setTimeout(() => checkIfLive(), 1200);
+        checkIfLive();
+        setTimeout(() => checkIfLive(), 1500);
     }
 }
 
 const checkIfLive = () => {
     // Max timeout: 500ms
     // Overhead: 200ms
-    if (Date.now() - lastBufferTimestamp > 700) {
-        streamStatus.style.color = "red";
-        streamStatus.innerHTML = "Radio stream offline";
-        streamStart.style.display = "none";
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    } else {
-        streamStatus.innerHTML = "";
-        streamStart.style.display = "block";
+    if (playClicked) {
+        if (Date.now() - lastBufferTimestamp > 1000) {
+            streamStatus.style.color = "red";
+            streamStatus.innerHTML = "Radio stream offline";
+            streamStart.style.display = "none";
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        } else {
+            streamStatus.innerHTML = "";
+            streamStart.style.display = "block";
+        }
     }
 }

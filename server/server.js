@@ -39,10 +39,7 @@ wss.on("connection", async (ws, req) => {
     if (await GetPassword(parameters.query.password)) {
         ws.on("message", data => {
             wss.clients.forEach(client => {
-                client.send(JSON.stringify({
-                    "route": "stream",
-                    "data": data
-                }));
+                client.send(data);
             });
         });
     } else {

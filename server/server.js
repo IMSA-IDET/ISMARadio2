@@ -61,7 +61,7 @@ wss.on("connection", async (ws, req) => {
     });
 });
 
-app.get("/schedule", (req, res) => {
+app.get("/scheduleData", (req, res) => {
     res.json(schedule);
 });
 

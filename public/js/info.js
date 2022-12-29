@@ -63,7 +63,7 @@ const numberToTime = n => {
     return `${hour % 12}:${minute} ${meridiem}`;
 }
 
-fetch("/schedule").then(data => data.json()).then(json => infoHandler(json));
+fetch("/scheduleData").then(data => data.json()).then(json => infoHandler(json));
 const infoMessage = data => infoHandler(data);
 
 

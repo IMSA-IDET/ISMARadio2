@@ -1,5 +1,7 @@
 #topnav {
-    position: relative;
+    position: fixed;
+    top: 0px;
+    z-index: 99;
     background-color: var(--navColor);
     width: 100%;
     height: fit-content;
@@ -9,6 +11,11 @@
     align-items: center;
     user-select: none;
     border-top: 1px solid var(--iconcolor);
+}
+
+#topnavPadding {
+    width: 100%;
+    height: 70px;
 }
 
 #logo {

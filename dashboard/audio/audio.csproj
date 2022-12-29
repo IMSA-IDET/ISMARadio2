@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="NAudio" Version="2.1.0" />
-    <PackageReference Include="WebSocketSharp" Version="1.0.3-rc11" />
+    <PackageReference Include="Websocket.Client" Version="4.4.43" />
   </ItemGroup>
 
 </Project>

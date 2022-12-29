@@ -59,8 +59,10 @@ namespace audio
             waveIn.DataAvailable += new EventHandler<WaveInEventArgs>(waveInDataHandler);
             waveIn.RecordingStopped += new EventHandler<StoppedEventArgs>(waveInStopHandler);
             waveIn.StartRecording();
+            Console.WriteLine("Recording started");
 
-            Console.ReadKey();
+            ManualResetEvent exitEvent = new ManualResetEvent(false);
+            exitEvent.WaitOne();
 
             void waveInDataHandler(object? sender, WaveInEventArgs e)
             {

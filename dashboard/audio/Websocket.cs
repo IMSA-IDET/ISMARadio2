@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebSocketSharp;
-using WebSocketSharp.Server;
+using Websocket.Client;
 
 namespace audio
 {
     public class Websocket
     {
-        WebSocket webscoket;
+        WebsocketClient websocket;
 
         public Websocket(string url)
         {
-            webscoket = new WebSocket(url);
-            webscoket.Connect();
+            Uri uri = new Uri(url);
+            websocket = new WebsocketClient(uri);
+
+            websocket.ReconnectTimeout = TimeSpan.FromSeconds(30);
+            websocket.ReconnectionHappened.Subscribe(info => Console.WriteLine($"Reconnection type: {info.Type}"));
+
+            websocket.Start();
             Console.WriteLine("Client started");
         }
 
         public void SendSoundData(byte[] data)
         {
-            webscoket.Send(data);
+            websocket.Send(data);
         }
     }
 }

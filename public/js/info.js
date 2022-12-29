@@ -1,4 +1,8 @@
+let timeSinceStart = Date.now();
+
 const infoHandler = info => {
+    timeSinceStart = info.streamStart;
+    
     const current = info.current;
     document.getElementById("currentName").innerHTML = current.name;
     document.getElementById("albumcover").src = current.cover;
@@ -17,7 +21,7 @@ const infoHandler = info => {
     nextContainer.textContent = "";
     info.next.forEach(next => {
         if (next.rank == 999) {
-            return
+            return;
         }
         
         const nextItem = document.createElement("div");
@@ -61,3 +65,26 @@ const numberToTime = n => {
 
 fetch("/schedule").then(data => data.json()).then(json => infoHandler(json));
 const infoMessage = data => infoHandler(data);
+
+
+
+const numberToTimer = n => {
+    const addZero = t => (t < 10) ? `0${t}` : t;
+
+    let hour = Math.floor(n / 1000 / 60 / 60);
+    hour = addZero(hour);
+
+    let minute = Math.floor((n / 1000 / 60) - hour * 60);
+    minute = addZero(minute);
+
+    let second = Math.floor((n / 1000) - hour * 60 * 60 - minute * 60);
+    second = addZero(second);
+
+    return `${hour}:${minute}:${second}`;
+}
+
+const timeText = document.getElementById("streamStart");
+
+setInterval(() => {
+    timeText.innerHTML = numberToTimer(Date.now() - timeSinceStart);
+}, 1000)

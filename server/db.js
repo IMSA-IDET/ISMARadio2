@@ -33,6 +33,7 @@ export const GetSchedule = () => {
 
             let current = null;
             let next = [{rank: 999}];
+            let streamStart = 0;
             let timeout = 5000;
     
             shows.forEach(show => {
@@ -40,8 +41,10 @@ export const GetSchedule = () => {
                     if (checkDate(time) === 0) {
                         current = show;
                         const date = new Date();
-                        const currentHour = (date.getHours() * 60 + date.getMinutes()) * 60 + date.getSeconds();
-                        timeout = (time.end * 60 * 60 - currentHour) * 1000;
+                        const currentSeconds = (date.getHours() * 60 + date.getMinutes()) * 60 + date.getSeconds();
+
+                        streamStart = Date.now() - (currentSeconds - time.start * 60 * 60) * 1000;
+                        timeout = (time.end * 60 * 60 - currentSeconds) * 1000;
                     }
                 });
             });
@@ -78,6 +81,7 @@ export const GetSchedule = () => {
             resolve({
                 current: current,
                 next: next,
+                streamStart: streamStart,
                 timeout: timeout
             })
         });

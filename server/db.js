@@ -88,6 +88,20 @@ export const GetSchedule = () => {
     });
 }
 
+export const GetAllShows = () => {
+    return new Promise(resolve => {
+        fs.readFile("./server/db/shows.json", "utf8", (err, data) => {
+            if (err) {
+                throw err;
+            }
+    
+            const json = JSON.parse(data);
+            
+            resolve(json);
+        });
+    });
+}
+
 const checkDate = dateObj => {
     const date = new Date();
     const day = date.getDay();

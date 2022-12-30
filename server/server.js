@@ -18,7 +18,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Info
 let schedule;
+let shows;
 let currentListeners = 0;
+
+(async () => {shows = await GetAllShows()});
 
 const scheduleLookUp = async () => {
     schedule = await GetSchedule();
@@ -63,6 +66,10 @@ wss.on("connection", async (ws, req) => {
 
 app.get("/scheduleData", (req, res) => {
     res.json(schedule);
+});
+
+app.get("/shows", (req, res) => {
+    res.json(shows);
 });
 
 //Start server listening

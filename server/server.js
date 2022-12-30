@@ -3,7 +3,7 @@ import http from "http"
 import bodyParser from "body-parser"
 import { WebSocketServer } from "ws"
 import url from "url"
-import { GetPassword, GetSchedule } from "./db.js"
+import { GetAllShows, GetPassword, GetSchedule } from "./db.js"
 
 // Config
 const PORT = 3001;
@@ -21,7 +21,9 @@ let schedule;
 let shows;
 let currentListeners = 0;
 
-(async () => {shows = await GetAllShows()});
+GetAllShows().then(s => {
+    shows = s;
+});
 
 const scheduleLookUp = async () => {
     schedule = await GetSchedule();
@@ -68,7 +70,7 @@ app.get("/scheduleData", (req, res) => {
     res.json(schedule);
 });
 
-app.get("/shows", (req, res) => {
+app.get("/showsData", (req, res) => {
     res.json(shows);
 });
 

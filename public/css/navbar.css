@@ -25,12 +25,12 @@
 
 #logoA {
     border-bottom: 2px solid transparent;
-    transition: 100ms;
 }
 
 #logoA:hover {
     background-color: var(--navhighlightColor);
     border-bottom: 2px solid var(--iconcolor);
+    transition: 100ms;
 }
 
 
@@ -40,11 +40,11 @@
     margin: 0;
     padding: 20px;
     border-bottom: 2px solid transparent;
-    transition: 100ms;
     font-size: 18px;
 }
 
 .navlink:hover {
     background-color: var(--navhighlightColor);
     border-bottom: 2px solid var(--iconcolor);
+    transition: 100ms;
 }

@@ -117,6 +117,7 @@
         width: 90px;
         height: 100px;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
     
     #connections {

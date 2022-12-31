@@ -24,7 +24,7 @@ const drawBars = () => {
 
     for (let i = barArray.length - 1; i >= 0; i--) {
         ctx.beginPath();
-        const x = i * (300 / barCount);
+        const x = i * (canvas.width / barCount);
         const height = barArray[i] * 46;
         ctx.moveTo(x, 50 - height - 2);
         ctx.lineTo(x, 50 + height + 2);

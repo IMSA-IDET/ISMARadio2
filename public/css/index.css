@@ -1,3 +1,4 @@
+/* Shared by both desktop and mobile */
 #bottomControlPanel {
     position: fixed;
     bottom: 0;
@@ -5,220 +6,17 @@
     width: 100%;
     box-shadow: 0px -1px 1px var(--borderColor);
     background-color: var(--navColor);
-
 }
 
-#centerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 50px;
-    margin-top: 30px;
+#currentPlayingDetails > h3 {
+    margin: 0;
+    font-size: 20px;
 }
 
-.centerItem {
-    max-width: 500px;
-    border: 1px solid var(--borderColor);
-    padding: 20px;
-    position: relative;
-}
-
-#playingMiddleDivs {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-#playingMiddleDivs > div{
-    height: 200px;
-}
 #currentName {
+    color: var(--iconcolor);
     display: inline;
     font-weight: 400;
-}
-#albumcover {
-    width: 200px;
-    margin: 30px 20px 10px 0;
-    border: 1px solid var(--borderColor);
-}
-#Schedule {
-    margin: 30px 10px 10px 20px;
-}
-#Schedule > h3 {
-    margin: 0;
-}
-
-#rightBottomContainer {
-    position: fixed;
-    border: 1px solid var(--borderColor);
-    width: fit-content;
-    height: fit-content;
-    bottom: 60px;
-    right: 0;
-    padding: 0;
-    margin: 15px;
-}
-
-#chatTopBar {
-    height: fit-content;
-    margin: 10px;
-}
-
-#chatSettingButton {
-    display: inline-block;
-    cursor: pointer;
-}
-
-#chatTitle {
-    display: inline-block;
-    position: absolute;
-    vertical-align: middle;
-    line-height: 25px;
-    margin-left: 10px;
-}
-
-#chatSettingButton object {
-    width: 25px;
-}
-
-#chat {
-    border-top: 2px solid var(--borderColor);
-    border-bottom: 2px solid var(--borderColor);
-    padding: 0 10px 0 10px;
-    overflow-y: auto;
-    overflow-wrap: break-word;
-    width: 300px;
-    height: 350px;
-    display: flex;
-    flex-direction: column-reverse;
-}
-
-.chatMessage {
-    margin: 10px 0 10px 0;
-    color: rgb(92, 92, 92);
-}
-
-.chatSender {
-    display: inline;
-    font-size: 13px;
-}
-
-.chatContent {
-    display: inline;
-    font-size: 13px;
-}
-
-#chatSendContainer {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    width: -webkit-fill-available;
-    padding: 10px 10px 0 10px;
-}
-
-#chatInput {
-    width: -webkit-fill-available;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid var(--borderColor);
-    transition: 200ms;
-    background-color: var(--bodyBackgroundColor);
-    color: var(--primaryTextColor);
-    outline: none;
-}
-
-#chatInput:hover {
-    background-color: rgb(26, 26, 26);
-}
-
-#chatSendButton {
-    cursor: pointer;
-}
-
-#chatSendButton object {
-    width: 30px;
-    transition: 200ms;
-}
-
-#connections {
-    margin: 0;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%)
-}
-
-#connections>object {
-    width: 22px;
-    margin-left: 10px;
-    margin-right: 30px;
-}
-
-#conCount {
-    font-size: larger;
-    margin: 0;
-}
-
-#volumeContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    position: absolute;
-    height: fit-content;
-    width: fit-content;
-    margin: 0;
-    margin-left: 30px;
-    top: 50%;
-    transform: translateY(-50%)
-}
-
-#volumeContainer>img {
-    width: 35px;
-    height: 35px;
-}
-
-#volcontrol {
-    -webkit-appearance: none;
-    background-color: var(--iconcolor);
-    margin-left: 10px;
-    border-radius: 25px;
-    height: 8px;
-    background: linear-gradient(to right, var(--iconcolor) 0%, var(--iconcolor) 50%, #000 50%, #000 100%);
-    border: 1px solid var(--iconcolor)
-}
-
-#volcontrol::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--iconcolor);
-    cursor: pointer;
-}
-
-#volcontrol:hover::-webkit-slider-thumb {
-    background-color: white;
-    width: 12px;
-    height: 12px;
-}
-
-
-#volicon {
-    width: 25px;
-
-}
-
-#conCount {
-    color: var(--iconcolor)
-}
-
-
-#upcomingScheduleContainer {
-    display: inline-block;
-    max-width: 300px;
 }
 #MediaControl {
     height: fit-content;
@@ -229,111 +27,443 @@
     margin: auto;
 }
 
-#visual {
-    margin-right: 20px;
-}
-
 #streamStart {
     position: absolute;
     bottom: 0px;
     font-weight: 700;
-    width: 300px;
     text-align: center;
     display: none;
 }
-
+    
 #streamStatus {
+    width: 100%;
     position: absolute;
     bottom: 50%;
     transform: translateY(50%);
-    width: 300px;
     text-align: center;
     font-size: 20px;
 }
 
-#currentPlayingDetails>h3 {
-    margin: 0;
-    font-size: 20px;
-}
 
-#description {
-    margin-top: 10px;
-}
 
-#description>h3 {
-    margin: 0;
-}
-
-#playButton {
-    position: absolute;
-    width: 30px;
-    height: 32px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-#playButtonImage {
-    width: 30px;
-    margin-right: 20px;
-}
-
-#pauseButtonImage {
-    width: 28px;
-    padding: 1px;
-    margin-right: 20px;
-    display: none;
-}
-
-#currentName {
-    color: var(--iconcolor);
-}
-
-.upnextcover {
-    width: 80px;
-    height: 80px;
-    margin: 5px;
-    border: 1px solid var(--borderColor);
-}
-
-.upnextName {
-    margin: 5px;
-}
-
-.nextTimeSlot {
-    margin: 5px;
-}
-
-.showScheduleTime {
-    border-bottom: 2px solid var(--borderColor);
-    margin: 0;
-    margin-top: 20px;
-}
-
-#msgsend {
-    position: absolute;
-    margin-left: -30px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-#msgsendImage {
-    width: 30px;
-}
-
-#nextTitle {
-    margin-bottom: 16px;
-    font-weight: bold;
-    font-size: 20px;
-}
-
-#nextContainer {
-    display: flex;
-    gap: 24px;
-    flex-direction: column;
-}
-
-.nextItem {
+/* Mobile */
+@media only screen and (max-width: 768px) {
+    .navlink {
+        display: none;
+    }
     
+    #upcomingScheduleContainer {
+        display: none;
+    }
+    
+    #chatContainer {
+        display: none;
+    }
+    
+    #Schedule {
+        display: none;
+    }
+    
+    #volumeContainer {
+        display: none;
+    }
+    
+    #currentPlayingDetails {
+        margin: 20px;
+    }
+    
+    #albumcover {
+        position: relative;
+        min-width: 250px;
+        border: 1px solid var(--borderColor);
+        left: 50%;
+        transform: translateX(-50%);
+        margin-top: 20px;
+    }
+
+    #currentPlayingDetails > h3 {
+        text-align: center;
+    }
+
+    #description > h3 {
+        border-bottom: 2px solid var(--borderColor);
+        width: fit-content;
+    }
+    
+    #playButtonImage {
+        width: 50px;
+        height: 80px;
+        padding: 10px 20px 10px 20px;
+        display: block;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+    #pauseButtonImage {
+        width: 50px;
+        height: 80px;
+        padding: 10px 20px 10px 20px;
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+    }
+
+    #playButton {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 90px;
+        height: 100px;
+        cursor: pointer;
+    }
+    
+    #connections {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        right: 90px;
+        top: 0px;
+        height: 100px;
+        width: calc(50% - 90px);
+    }
+    
+    #connections > object {
+        width: 30px;
+    }
+    
+    #conCount {
+        font-size: x-large;
+        margin: 0;
+        color: var(--iconcolor)
+    }
+
+    #visual {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 50%;
+        height: 100px;
+    }
+
+    #visualCanvas {
+        height: 100px;
+        width: 100%;
+    }
+    
+    #streamStatus {
+        width: 100%;
+    }
+    
+    #streamStart {
+        width: 100%;
+    }
+}
+
+
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+    #centerContainer {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 50px;
+        margin-top: 30px;
+    }
+    
+    .centerItem {
+        max-width: 500px;
+        border: 1px solid var(--borderColor);
+        padding: 20px;
+        position: relative;
+    }
+    
+    #playingMiddleDivs {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    #playingMiddleDivs > div{
+        height: 200px;
+    }
+    #albumcover {
+        width: 200px;
+        margin: 30px 20px 10px 0;
+        border: 1px solid var(--borderColor);
+    }
+    #Schedule {
+        margin: 30px 10px 10px 20px;
+    }
+    #Schedule > h3 {
+        margin: 0;
+    }
+    
+    #rightBottomContainer {
+        position: fixed;
+        border: 1px solid var(--borderColor);
+        width: fit-content;
+        height: fit-content;
+        bottom: 60px;
+        right: 0;
+        padding: 0;
+        margin: 15px;
+    }
+    
+    #chatTopBar {
+        height: fit-content;
+        margin: 10px;
+    }
+    
+    #chatSettingButton {
+        display: inline-block;
+        cursor: pointer;
+    }
+    
+    #chatTitle {
+        display: inline-block;
+        position: absolute;
+        vertical-align: middle;
+        line-height: 25px;
+        margin-left: 10px;
+    }
+    
+    #chatSettingButton object {
+        width: 25px;
+    }
+    
+    #chat {
+        border-top: 2px solid var(--borderColor);
+        border-bottom: 2px solid var(--borderColor);
+        padding: 0 10px 0 10px;
+        overflow-y: auto;
+        overflow-wrap: break-word;
+        width: 300px;
+        height: 350px;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+    .chatMessage {
+        margin: 10px 0 10px 0;
+        color: rgb(92, 92, 92);
+    }
+    
+    .chatSender {
+        display: inline;
+        font-size: 13px;
+    }
+    
+    .chatContent {
+        display: inline;
+        font-size: 13px;
+    }
+    
+    #chatSendContainer {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        width: -webkit-fill-available;
+        padding: 10px 10px 0 10px;
+    }
+    
+    #chatInput {
+        width: -webkit-fill-available;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid var(--borderColor);
+        transition: 200ms;
+        background-color: var(--bodyBackgroundColor);
+        color: var(--primaryTextColor);
+        outline: none;
+    }
+    
+    #chatInput:hover {
+        background-color: rgb(26, 26, 26);
+    }
+    
+    #chatSendButton {
+        cursor: pointer;
+    }
+    
+    #chatSendButton object {
+        width: 30px;
+        transition: 200ms;
+    }
+    
+    #connections {
+        margin: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%)
+    }
+    
+    #connections>object {
+        width: 22px;
+        margin-left: 10px;
+        margin-right: 30px;
+    }
+    
+    #conCount {
+        font-size: larger;
+        margin: 0;
+    }
+    
+    #volumeContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: absolute;
+        height: fit-content;
+        width: fit-content;
+        margin: 0;
+        margin-left: 30px;
+        top: 50%;
+        transform: translateY(-50%)
+    }
+    
+    #volumeContainer>img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    #volcontrol {
+        -webkit-appearance: none;
+        background-color: var(--iconcolor);
+        margin-left: 10px;
+        border-radius: 25px;
+        height: 8px;
+        background: linear-gradient(to right, var(--iconcolor) 0%, var(--iconcolor) 50%, #000 50%, #000 100%);
+        border: 1px solid var(--iconcolor)
+    }
+    
+    #volcontrol::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--iconcolor);
+        cursor: pointer;
+    }
+    
+    #volcontrol:hover::-webkit-slider-thumb {
+        background-color: white;
+        width: 12px;
+        height: 12px;
+    }
+    
+    
+    #volicon {
+        width: 25px;
+    
+    }
+    
+    #conCount {
+        color: var(--iconcolor)
+    }
+    
+    
+    #upcomingScheduleContainer {
+        display: inline-block;
+        max-width: 300px;
+    }
+    
+    #visual {
+        margin-right: 20px;
+    }
+    
+    #streamStart {
+        width: 300px;
+    }
+    
+    #streamStatus {
+        width: 300px;
+    }
+    
+    #description {
+        margin-top: 10px;
+    }
+    
+    #description>h3 {
+        margin: 0;
+    }
+    
+    #playButton {
+        position: absolute;
+        width: 30px;
+        height: 32px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    
+    #playButtonImage {
+        width: 30px;
+        margin-right: 20px;
+    }
+    
+    #pauseButtonImage {
+        width: 28px;
+        padding: 1px;
+        margin-right: 20px;
+        display: none;
+    }
+    
+    .upnextcover {
+        width: 80px;
+        height: 80px;
+        margin: 5px;
+        border: 1px solid var(--borderColor);
+    }
+    
+    .upnextName {
+        margin: 5px;
+    }
+    
+    .nextTimeSlot {
+        margin: 5px;
+    }
+    
+    .showScheduleTime {
+        border-bottom: 2px solid var(--borderColor);
+        margin: 0;
+        margin-top: 20px;
+    }
+    
+    #msgsend {
+        position: absolute;
+        margin-left: -30px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: inline-block;
+    }
+    
+    #msgsendImage {
+        width: 30px;
+    }
+    
+    #nextTitle {
+        margin-bottom: 16px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    #nextContainer {
+        display: flex;
+        gap: 24px;
+        flex-direction: column;
+    }
+    
+    .nextItem {
+        
+    }
 }

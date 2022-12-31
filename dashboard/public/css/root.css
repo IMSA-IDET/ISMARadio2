@@ -3,6 +3,7 @@
 :root {
     --primary-background-color: rgb(0, 0, 0);
     --primary-shadow-color: #171717;
+    --primary-text-color: #fff;
 
 
     /* Button Interaction*/
@@ -26,3 +27,26 @@ body {
     user-select: none;
 }
 
+* {
+    color: var(--primary-text-color);
+}
+
+input {
+    background-color: var(--primary-background-color);
+    outline: none;
+    border: 2px solid var(--primary-shadow-color);
+}
+
+button {
+    background-color: var(--primary-text-color);
+    color: var(--primary-background-color);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--general-button-hover);
+}
+
+button:active {
+    background-color: var(--general-button-active);
+}

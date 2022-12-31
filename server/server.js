@@ -15,6 +15,7 @@ const wss = new WebSocketServer({ server: server });
 
 app.use(express.static("public", { extensions: ["html"] }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Info
 let schedule;
@@ -72,6 +73,10 @@ app.get("/scheduleData", (req, res) => {
 
 app.get("/showsData", (req, res) => {
     res.json(shows);
+});
+
+app.post("/checkPassword", async (req, res) => {
+    res.send(await GetPassword(req.body.password));
 });
 
 //Start server listening

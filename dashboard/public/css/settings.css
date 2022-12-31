@@ -1,9 +1,5 @@
 #settingsContainer {
-    display: inline-block;
-    width: fit-content;
-    height: fit-content;
-    margin-left: 150px;
-    transform: translateX(-50%);
+    margin-left: 80px;
     padding: 2px;
 }
 
@@ -18,5 +14,6 @@
     display: block;
 }
 #settingsContainer>.setting>input:hover {
+    color: var(--primary-background-color);
     background-color: var(--general-button-hover);
 }

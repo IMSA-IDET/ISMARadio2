@@ -47,6 +47,8 @@ const startBroadcast = async () => {
 
                             if (timerInterval != undefined) {
                                 clearInterval(timerInterval);
+                            } else {
+                                setTimeout(() => stopBroadcast(), -endTime - Date.now());
                             }
 
                             timerInterval = setInterval(() => {
@@ -120,7 +122,7 @@ const updateOnlineCounter = () => {
 }
 
 const updateEndCounter = () => {
-    document.getElementById("endCounter").innerHTML = `Until end: ${numberToTimer(endTime - Date.now())}`;
+    document.getElementById("endCounter").innerHTML = `Until end: ${numberToTimer(-endTime - Date.now())}`;
 }
 
 const numberToTimer = n => {

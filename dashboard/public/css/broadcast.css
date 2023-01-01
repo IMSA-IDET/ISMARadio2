@@ -1,0 +1,28 @@
+body {
+    overflow-x: hidden;
+}
+
+#broadcastContainer {
+    margin: 0px 30px 30px 80px;
+}
+
+#dashboardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dashboardItem {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border: 2px solid var(--primary-shadow-color);
+}
+
+h3, h5 {
+    margin-top: 0px;
+}
+
+button {
+    font-size: 25px;
+}

@@ -52,13 +52,15 @@ wss.on("connection", async (ws, req) => {
         ws.on("message", data => {
             wss.clients.forEach(client => {
                 const stringData = data.toString();
-                const route = JSON.parse(stringData).route;
-                if (route == "ping" || route == "chat") {
-                    client.send(JSON.stringify({
-                        "route": route,
-                        "data": stringData
-                    }));
-                }
+                try {
+                    const route = JSON.parse(stringData).route;
+                    if (route == "ping" || route == "chat") {
+                        client.send(JSON.stringify({
+                            "route": route,
+                            "data": stringData
+                        }));
+                    }
+                } catch {}
             });
         });
     }

@@ -1,3 +1,6 @@
+const dataCounter = document.getElementById("dataCounter");
+
+let totalData = 0; // In bytes
 let pingStart;
 
 const pingServer = () => {

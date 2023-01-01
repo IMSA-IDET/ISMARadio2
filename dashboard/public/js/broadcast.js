@@ -12,12 +12,15 @@ let startTime;
 let endTime;
 let timerInterval;
 
-const startBroadcast = () => {
+const startBroadcast = async () => {
     if (!castPlayed) {
-        startPauseBroadcast.innerHTML = "Pause";
-        castPlayed = true;
-
         if (!connected) {
+            if (!await CheckPassword()) {
+                broadcastStatus.innerHTML = "Incorrect password";
+                broadcastStatus.style.color = "red";
+                return;
+            }
+
             broadcastStatus.innerHTML = "Recording starting...";
             broadcastStatus.style.color = "orange";
 
@@ -73,6 +76,9 @@ const startBroadcast = () => {
 
             ipc.send("unmuteMic");
         }
+        
+        startPauseBroadcast.innerHTML = "Pause";
+        castPlayed = true;
     } else {
         castPlayed = false;
 

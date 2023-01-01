@@ -18,7 +18,7 @@ const setCurrentShowText = msg => {
 }
 setCurrentShowText("");
 
-const applySettings = () => {
+const applySettings = async () => {
     settingsIDs.forEach(id => {
         const settingValue = document.getElementById(id).value;
 
@@ -27,22 +27,9 @@ const applySettings = () => {
         }
     });
 
-    fetch(GetServerURL() + "/checkPassword", {
-        method: "POST",
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            password: localStorage.getItem("PasswordSet")
-        })
-    }).then(data => data.json()).then(json => {
-        if (!json) {
-            setCurrentShowText("[Incorrect Password]");
-        } else {
-            setCurrentShowText("[Connected]");
-        }
-    }).catch(err => {
-        console.log(err);
-    });
+    if (!await CheckPassword()) {
+        setCurrentShowText("[Incorrect Password]");
+    } else {
+        setCurrentShowText("[Connected]");
+    }
 }

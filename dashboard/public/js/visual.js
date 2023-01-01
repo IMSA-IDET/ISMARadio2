@@ -33,6 +33,10 @@ const drawBars = () => {
 }
 
 const audioMessage = async data => {
+    totalData += bufferSize * 4;
+    console.log(totalData / 1000 / 1000)
+    dataCounter.innerHTML = `Data sent: ${Math.round(totalData / 1000 / 10) / 100}mb`; // Round 2 places
+
     let socketBuffer = await data.arrayBuffer();
     socketBuffer = new Int32Array(socketBuffer);
 

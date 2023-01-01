@@ -13,7 +13,7 @@ server.addEventListener("message", event => {
 
         switch(json.route) {
             case "listeners":
-                //listenersMessage(json.data);
+                listenersMessage(json.data);
                 break;
             case "ping":
                 pongMessage();

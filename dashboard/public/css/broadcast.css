@@ -33,3 +33,7 @@ button {
     position: absolute;
     bottom: 20px;
 }
+
+#volumeLabel {
+    margin: 20px 0px 0px 0px;
+}

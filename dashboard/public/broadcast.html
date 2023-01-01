@@ -19,6 +19,8 @@
 			<div class="dashboardItem">
 				<button id="startPauseBroadcast" onclick="startBroadcast()">Start</button>
 				<button id="stopBroadcast" onclick="stopBroadcast()">Stop</button>
+                <h5 id="volumeLabel">Volume</h5>
+                <input id="volumeSlider" type="range" max="5" onchange="volumeHandler(this.value)">
 			</div>
 			<div class="dashboardItem">
 				<h3 id="broadcastStatus">Press START to begin broadcast</h3>

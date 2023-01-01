@@ -145,3 +145,11 @@ const checkBroadcastStatus = href => {
         location.href = href;
     }
 }
+
+const volumeHandler = volume => {
+    localStorage.setItem("VolumeSet", volume);
+    if (castPlayed) {
+        console.log(volume)
+        ipc.send("updateVolume", {volume: volume});
+    }
+}

@@ -100,6 +100,7 @@ const stopBroadcast = () => {
             broadcastStatus.style.color = "red";
 
             document.getElementById("onlineCounter").innerHTML = "Online: 00:00:00";
+            document.getElementById("endCounter").innerHTML = "Until end: 00:00:00";
             clearInterval(timerInterval);
         });
     }

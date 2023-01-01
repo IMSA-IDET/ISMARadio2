@@ -21,15 +21,15 @@
 				<button id="stopBroadcast" onclick="stopBroadcast()">Stop</button>
 			</div>
 			<div class="dashboardItem">
-				<h5 id="onlineCounter">Online: 00:00:00</h5>
-				<h5 id="endCounter">Until end: 00:00:00</h5>
-				<canvas id="visual" width="300" height="100"></canvas>
-			</div>
-			<div class="dashboardItem">
 				<h3 id="broadcastStatus">Press START to begin broadcast</h3>
 				<h5 id="serverPing">Ping: 999ms</h5>
 				<h5 id="bitrate">Bitrate: 44100hz</h5>
 				<h5 id="dataCounter">Data sent: 0mb</h5>
+			</div>
+			<div class="dashboardItem">
+				<h5 id="onlineCounter">Online: 00:00:00</h5>
+				<h5 id="endCounter">Until end: 00:00:00</h5>
+				<canvas id="visualCanvas" width="200" height="100"></canvas>
 			</div>
 			<div class="dashboardItem">
 				<h5 id="listenerCounter">0 Listeners</h5>
@@ -38,6 +38,8 @@
 	</div>
 	<script src="js/helper.js"></script>
 	<script src="js/broadcast.js"></script>
+	<script src="js/visual.js"></script>
+	<script src="js/wsHandler.js"></script>
 </body>
 
 </html>

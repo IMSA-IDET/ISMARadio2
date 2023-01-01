@@ -17,6 +17,7 @@ body {
     height: 200px;
     padding: 20px;
     border: 2px solid var(--primary-shadow-color);
+    position: relative;
 }
 
 h3, h5 {
@@ -25,4 +26,10 @@ h3, h5 {
 
 button {
     font-size: 25px;
+}
+
+#visualCanvas {
+    background-color: rgb(12, 12, 12);
+    position: absolute;
+    bottom: 20px;
 }

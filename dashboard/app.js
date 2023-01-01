@@ -48,7 +48,8 @@ ipcMain.on("startRecording", (event, arg) => {
     child = spawn("audio\\bin\\Debug\\net6.0-windows\\audio.exe", [
         arg.socketURL,
         arg.microphoneID,
-        arg.recordingName
+        arg.recordingName,
+        arg.volumeMultiplier
     ], { shell: true });
 
     child.stdout.on("data", data => {

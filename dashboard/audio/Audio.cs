@@ -13,6 +13,7 @@ namespace audio
          * [0]: socket server URL
          * [1]: microphone ID
          * [2]: recoding's file name
+         * [3]: volume multiplier
          */
         static public void Main(string[] args)
         {
@@ -21,7 +22,7 @@ namespace audio
                 Websocket websocket = new Websocket(args[0]);
                 Sound sound = new Sound(websocket);
 
-                sound.StartRecording(int.Parse(args[1]), args[2]);
+                sound.StartRecording(int.Parse(args[1]), args[2], float.Parse(args[3]));
             } else
             {
                 Console.WriteLine("No arguments provided");

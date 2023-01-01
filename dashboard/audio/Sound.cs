@@ -38,7 +38,7 @@ namespace audio
             return masterVolumePercent;
         }
 
-        public void StartRecording(int deviceID, string recordingName)
+        public void StartRecording(int deviceID, string recordingName, float volumeMultiplier)
         {
             waveIn = new WaveInEvent
             {
@@ -67,6 +67,10 @@ namespace audio
             void waveInDataHandler(object? sender, WaveInEventArgs e)
             {
                 byte[] buffer = e.Buffer;
+                for (int i = 0; i < buffer.Length; i++) {
+                    buffer[i] = (byte)(buffer[i] * volumeMultiplier);
+                }
+
                 websocket.SendSoundData(buffer);
 
                 // Stop recording at 30 seconds

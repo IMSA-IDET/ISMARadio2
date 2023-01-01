@@ -62,15 +62,14 @@ const startBroadcast = () => {
         } else {
             broadcastStatus.innerHTML = broadcastStatus.innerHTML.replace(" [Paused]", "");
 
-            // TODO: Return microphone volume back to 1
+            ipc.send("unmuteMic");
         }
     } else {
         startPauseBroadcast.innerHTML = "Continue";
-        castStarted = false;
 
         broadcastStatus.innerHTML = broadcastStatus.innerHTML + " [Paused]";
 
-        // TODO: Set microphone volume to 0
+        ipc.send("muteMic");
     }
 }
 
@@ -80,6 +79,7 @@ const stopBroadcast = () => {
         castStarted = false;
 
         ipc.send("stopRecording");
+        ipc.send("unmuteMic");
 
         ipc.on("stoppedRecording", (event, status) => {
             connected = false;

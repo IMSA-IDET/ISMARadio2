@@ -105,6 +105,9 @@ const stopBroadcast = () => {
             broadcastStatus.innerHTML = "Stopped";
             broadcastStatus.style.color = "red";
 
+            totalData = 0;
+            dataCounter.innerHTML = "Data sent: 0mb";
+
             document.getElementById("onlineCounter").innerHTML = "Online: 00:00:00";
             document.getElementById("endCounter").innerHTML = "Until end: 00:00:00";
             clearInterval(timerInterval);

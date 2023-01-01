@@ -5,16 +5,17 @@ const ipc = electron.ipcRenderer;
 const startPauseBroadcast = document.getElementById("startPauseBroadcast");
 const broadcastStatus = document.getElementById("broadcastStatus");
 
-let castStarted = false;
+let castPlayed = false;
 let connected = false;
 
 let startTime;
+let endTime;
 let timerInterval;
 
 const startBroadcast = () => {
-    if (!castStarted) {
+    if (!castPlayed) {
         startPauseBroadcast.innerHTML = "Pause";
-        castStarted = true;
+        castPlayed = true;
 
         if (!connected) {
             broadcastStatus.innerHTML = "Recording starting...";
@@ -28,7 +29,7 @@ const startBroadcast = () => {
             });
 
             let hasError = false;
-            ipc.on("recordingStatus", (event, status) => {
+            ipc.on("recordingStatus", async (event, status) => {
                 switch(status) {
                     case "connected":
                         if (!hasError) {
@@ -38,9 +39,17 @@ const startBroadcast = () => {
 
                             startTime = Date.now();
 
+                            scheduleData = await fetch(GetServerURL() + "/scheduleData");
+                            scheduleJSON = await scheduleData.json();
+                            endTime = scheduleJSON.streamEnd;
+
+                            if (timerInterval != undefined) {
+                                clearInterval(timerInterval);
+                            }
+
                             timerInterval = setInterval(() => {
-                                updateTimeAlive();
-                                updateTimeUntilEnd();
+                                updateOnlineCounter();
+                                updateEndCounter();
                             }, 1000);
                         }
                         break;
@@ -65,6 +74,8 @@ const startBroadcast = () => {
             ipc.send("unmuteMic");
         }
     } else {
+        castPlayed = false;
+
         startPauseBroadcast.innerHTML = "Continue";
 
         broadcastStatus.innerHTML = broadcastStatus.innerHTML + " [Paused]";
@@ -74,9 +85,9 @@ const startBroadcast = () => {
 }
 
 const stopBroadcast = () => {
-    if (castStarted) {
+    if (castPlayed) {
         startPauseBroadcast.innerHTML = "Start";
-        castStarted = false;
+        castPlayed = false;
 
         ipc.send("stopRecording");
         ipc.send("unmuteMic");
@@ -88,6 +99,7 @@ const stopBroadcast = () => {
             broadcastStatus.innerHTML = "Stopped";
             broadcastStatus.style.color = "red";
 
+            document.getElementById("onlineCounter").innerHTML = "Online: 00:00:00";
             clearInterval(timerInterval);
         });
     }
@@ -95,10 +107,33 @@ const stopBroadcast = () => {
 
 
 
-const updateTimeAlive = () => {
-
+const updateOnlineCounter = () => {
+    document.getElementById("onlineCounter").innerHTML = `Online: ${numberToTimer(Date.now() - startTime)}`;
 }
 
-const updateTimeUntilEnd = () => {
-    
+const updateEndCounter = () => {
+    document.getElementById("endCounter").innerHTML = `Until end: ${numberToTimer(endTime - Date.now())}`;
+}
+
+const numberToTimer = n => {
+    const addZero = t => (t < 10) ? `0${t}` : t;
+
+    let hour = Math.floor(n / 1000 / 60 / 60);
+    hour = addZero(hour);
+
+    let minute = Math.floor((n / 1000 / 60) - hour * 60);
+    minute = addZero(minute);
+
+    let second = Math.floor((n / 1000) - hour * 60 * 60 - minute * 60);
+    second = addZero(second);
+
+    return `${hour}:${minute}:${second}`;
+}
+
+const checkBroadcastStatus = href => {
+    if (connected) {
+        alert("Stop broadcast before changing settings");
+    } else {
+        location.href = href;
+    }
 }

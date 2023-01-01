@@ -28,7 +28,7 @@ button {
     font-size: 25px;
 }
 
-#visualCanvas {
+canvas {
     background-color: var(--primary-shadow-color);
     position: absolute;
     bottom: 20px;
@@ -36,4 +36,19 @@ button {
 
 #volumeLabel {
     margin: 20px 0px 0px 0px;
+}
+
+.chartNumber {
+    margin: 0px;
+    position: absolute;
+    left: 30px;
+    text-align: center;
+}
+
+#chartMin {
+    bottom: 25px;
+}
+
+#chartMax {
+    bottom: 145px;
 }

@@ -22,7 +22,7 @@ const startBroadcast = () => {
             broadcastStatus.style.color = "orange";
 
             ipc.send("startRecording", {
-                socketURL: GetSocketURL(),
+                socketURL: GetSocketURL(true),
                 microphoneID: localStorage.getItem("MicrophoneSet"),
                 recordingName: localStorage.getItem("RecordingSet"),
                 volumeMultiplier: localStorage.getItem("VolumeSet")

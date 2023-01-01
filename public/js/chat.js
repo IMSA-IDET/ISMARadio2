@@ -54,6 +54,7 @@ const sendMessageHandler = () => {
     }
 
     server.send(JSON.stringify({
+        "route": "chat",
         "name": localStorage.getItem("username"),
         "message": input.value
     }));

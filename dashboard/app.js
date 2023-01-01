@@ -1,6 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const { spawn } = require("child_process");
-const { mic } = require('win-audio');
+const net = require("net");
 
 let win;
 let child;
@@ -48,13 +48,22 @@ ipcMain.on("startRecording", (event, arg) => {
     child = spawn("audio\\bin\\Debug\\net6.0-windows\\audio.exe", [
         arg.socketURL,
         arg.microphoneID,
-        arg.recordingName,
-        arg.volumeMultiplier
+        arg.recordingName
     ], { shell: true });
 
-    child.stdout.on("data", data => {
-        console.log(`stdout: ${data}`);
+    let server = net.createServer(stream => {
+        stream.on("end", () => {
+            server.close();
+        });
 
+        ipcMain.on("updateVolume", (event, arg) => {
+            stream.write(arg.volume + "\r\n");
+        });
+    });
+    
+    server.listen("\\\\.\\pipe\\audioPipe", () => {});
+    
+    child.stdout.on("data", data => {
         let connected = false;
         switch ((data + "").replace("\r\n", "")) {
             case "Recording started":
@@ -77,22 +86,10 @@ ipcMain.on("startRecording", (event, arg) => {
 
         win.webContents.send("recordingStatus", "unknown");
     });
-
-    child.on("close", code => {
-        console.log(`child process exited with code ${code}`);
-    });
 });
 
 ipcMain.on("stopRecording", (event, arg) => {
     killAudioChild().then(result => {
         win.webContents.send("stoppedRecording");
     });
-});
-
-ipcMain.on("muteMic", (event, arg) => {
-    mic.mute();
-});
-
-ipcMain.on("unmuteMic", (event, arg) => {
-    mic.unmute();
 });

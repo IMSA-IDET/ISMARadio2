@@ -5,6 +5,8 @@ namespace audio
 {
     public class Sound
     {
+        public float volumeMultiplier = 1.0f;
+
         private Websocket websocket;
         private WaveInEvent waveIn;
         private WaveFileWriter writer = null;
@@ -38,7 +40,7 @@ namespace audio
             return masterVolumePercent;
         }
 
-        public void StartRecording(int deviceID, string recordingName, float volumeMultiplier)
+        public void StartRecording(int deviceID, string recordingName)
         {
             waveIn = new WaveInEvent
             {

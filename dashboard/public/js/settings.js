@@ -1,5 +1,5 @@
 const currentShow = document.getElementById("currentShow");
-const settingsIDs = ["HostSet", "PortSet", "PasswordSet", "MicrophoneSet", "RecordingSet", "VolumeSet"];
+const settingsIDs = ["HostSet", "PortSet", "PasswordSet", "MicrophoneSet", "RecordingSet"];
 
 
 settingsIDs.forEach(id => {

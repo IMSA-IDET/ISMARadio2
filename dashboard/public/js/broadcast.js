@@ -27,8 +27,7 @@ const startBroadcast = async () => {
             ipc.send("startRecording", {
                 socketURL: GetSocketURL(true),
                 microphoneID: localStorage.getItem("MicrophoneSet"),
-                recordingName: localStorage.getItem("RecordingSet"),
-                volumeMultiplier: localStorage.getItem("VolumeSet")
+                recordingName: localStorage.getItem("RecordingSet")
             });
 
             let hasError = false;
@@ -74,7 +73,7 @@ const startBroadcast = async () => {
         } else {
             broadcastStatus.innerHTML = broadcastStatus.innerHTML.replace(" [Paused]", "");
 
-            ipc.send("unmuteMic");
+            ipc.send("updateVolume", {volume: localStorage.getItem("VolumeSet")});
         }
         
         startPauseBroadcast.innerHTML = "Pause";
@@ -86,7 +85,7 @@ const startBroadcast = async () => {
 
         broadcastStatus.innerHTML = broadcastStatus.innerHTML + " [Paused]";
 
-        ipc.send("muteMic");
+        ipc.send("updateVolume", {volume: 0});
     }
 }
 
@@ -96,7 +95,6 @@ const stopBroadcast = () => {
         castPlayed = false;
 
         ipc.send("stopRecording");
-        ipc.send("unmuteMic");
 
         ipc.on("stoppedRecording", (event, status) => {
             connected = false;

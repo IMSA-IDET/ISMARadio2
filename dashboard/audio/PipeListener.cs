@@ -13,12 +13,12 @@ namespace audio
     {
         private NamedPipeClientStream pipeClient;
 
-        public PipeListener(Sound sound)
+        public PipeListener(Recorder recorder)
         {
-            startListening(sound);
+            startListening(recorder);
         }
 
-        private async Task startListening(Sound sound)
+        private async Task startListening(Recorder recorder)
         {
             pipeClient = new NamedPipeClientStream("audioPipe");
 
@@ -31,7 +31,7 @@ namespace audio
             string output;
             while ((output = await reader.ReadLineAsync()) != null)
             {
-                sound.volumeMultiplier = float.Parse(output);
+                recorder.volumeMultiplier = float.Parse(output);
             }
         }
     }

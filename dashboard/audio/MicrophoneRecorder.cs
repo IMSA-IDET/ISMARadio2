@@ -3,18 +3,19 @@ using NAudio.Wave;
 
 namespace audio
 {
-    public class Sound
+    public class MicrophoneRecorder : Recorder
     {
-        public float volumeMultiplier = 1.0f;
+        private int deviceID;
+        private string recordingName;
 
-        private Websocket websocket;
         private WaveInEvent waveIn;
         private WaveFileWriter writer = null;
 
-
-        public Sound(Websocket ws)
+        public MicrophoneRecorder(Websocket websocket, int deviceID, string recordingName)
         {
-            websocket = ws;
+            this.websocket = websocket;
+            this.deviceID = deviceID;
+            this.recordingName = recordingName;
         }
 
         public WaveInCapabilities[] GetDeviceList()
@@ -40,7 +41,7 @@ namespace audio
             return masterVolumePercent;
         }
 
-        public void StartRecording(int deviceID, string recordingName)
+        public override void StartRecording()
         {
             waveIn = new WaveInEvent
             {
@@ -89,7 +90,7 @@ namespace audio
             }
         }
 
-        public void StopRecording()
+        public override void StopRecording()
         {
             waveIn.StopRecording();
         }

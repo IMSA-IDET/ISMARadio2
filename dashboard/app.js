@@ -45,11 +45,15 @@ app.on("window-all-closed", () => {
 
 
 ipcMain.on("startRecording", (event, arg) => {
-    child = spawn("audio\\bin\\Debug\\net6.0-windows\\audio.exe", [
-        arg.socketURL,
-        arg.microphoneID,
-        arg.recordingName
-    ], { shell: true });
+    let spawnArgs = [arg.type, arg.socketURL];
+    if (arg.type == "-m") {
+        spawnArgs.push(arg.microphoneID);
+        spawnArgs.push(arg.recordingName);
+    } else {
+        spawnArgs.push(arg.musicFolder);
+    }
+
+    child = spawn("audio\\bin\\Debug\\net6.0-windows\\audio.exe", spawnArgs, { shell: true });
 
     let server = net.createServer(stream => {
         stream.on("end", () => {

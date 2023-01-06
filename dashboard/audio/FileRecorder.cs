@@ -46,6 +46,8 @@ namespace audio
 
                 reader.Dispose();
             }
+
+            Console.WriteLine("Recording started");
         }
 
         public override void StopRecording()

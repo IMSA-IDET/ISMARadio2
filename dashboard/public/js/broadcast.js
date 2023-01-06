@@ -25,6 +25,7 @@ const startBroadcast = async () => {
             broadcastStatus.style.color = "orange";
 
             ipc.send("startRecording", {
+                type: "-m",
                 socketURL: GetSocketURL(true),
                 microphoneID: localStorage.getItem("MicrophoneSet"),
                 recordingName: localStorage.getItem("RecordingSet")

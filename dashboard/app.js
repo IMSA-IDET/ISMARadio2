@@ -45,7 +45,7 @@ app.on("window-all-closed", () => {
 
 
 ipcMain.on("startRecording", (event, arg) => {
-    let spawnArgs = [arg.type, arg.socketURL];
+    let spawnArgs = [arg.socketURL, arg.type];
     if (arg.type == "-m") {
         spawnArgs.push(arg.microphoneID);
         spawnArgs.push(arg.recordingName);

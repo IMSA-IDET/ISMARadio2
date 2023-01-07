@@ -21,10 +21,9 @@ namespace audio
             folderDir = Path.Combine(Environment.CurrentDirectory, folderName);
         }
 
-        public override void StartRecording()
+        private void playAllFiles(FileInfo[] files)
         {
-            DirectoryInfo info = new DirectoryInfo(folderDir);
-            FileInfo[] files = info.GetFiles("*.wav");
+            float totalPlaytime = 0;
 
             for (int fileIndex = 0; fileIndex < files.Length; fileIndex++)
             {
@@ -35,8 +34,9 @@ namespace audio
 
                 int bytesPerSample = 44100 * (reader.WaveFormat.BitsPerSample / 8) * reader.WaveFormat.Channels;
                 float songLength = read / bytesPerSample;
+                totalPlaytime += songLength;
 
-                for (int second = 0; second < read / bytesPerSample; second++)
+                for (int second = 0; second < songLength; second++)
                 {
                     int sampleByte = second * bytesPerSample;
                     byte[] sample = buffer[sampleByte..(sampleByte + bytesPerSample)];
@@ -46,6 +46,16 @@ namespace audio
 
                 reader.Dispose();
             }
+
+            Task.Delay((int)(1000 * totalPlaytime)).ContinueWith((task) => playAllFiles(files));
+        }
+
+        public override void StartRecording()
+        {
+            DirectoryInfo info = new DirectoryInfo(folderDir);
+            FileInfo[] files = info.GetFiles("*.wav");
+
+            playAllFiles(files);
 
             Console.WriteLine("Recording started");
         }

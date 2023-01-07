@@ -58,6 +58,9 @@ namespace audio
             playAllFiles(files);
 
             Console.WriteLine("Recording started");
+
+            ManualResetEvent exitEvent = new ManualResetEvent(false);
+            exitEvent.WaitOne();
         }
 
         public override void StopRecording()

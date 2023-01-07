@@ -12,7 +12,7 @@ let startTime;
 let endTime;
 let timerInterval;
 
-const startBroadcast = async () => {
+const startBroadcast = async type => {
     if (!castPlayed) {
         if (!connected) {
             if (!await CheckPassword()) {
@@ -24,12 +24,21 @@ const startBroadcast = async () => {
             broadcastStatus.innerHTML = "Recording starting...";
             broadcastStatus.style.color = "orange";
 
-            ipc.send("startRecording", {
-                type: "-m",
-                socketURL: GetSocketURL(true),
-                microphoneID: localStorage.getItem("MicrophoneSet"),
-                recordingName: localStorage.getItem("RecordingSet")
-            });
+            if (type == "-m") {
+                ipc.send("startRecording", {
+                    type: type,
+                    socketURL: GetSocketURL(true),
+                    microphoneID: localStorage.getItem("MicrophoneSet"),
+                    recordingName: localStorage.getItem("RecordingSet")
+                });
+            } else {
+                ipc.send("startRecording", {
+                    type: type,
+                    socketURL: GetSocketURL(true),
+                    folderName: document.getElementById("folderInput").value
+                });
+            }
+            
 
             let hasError = false;
             ipc.on("recordingStatus", async (event, status) => {

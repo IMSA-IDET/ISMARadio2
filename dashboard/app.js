@@ -50,9 +50,20 @@ ipcMain.on("startRecording", (event, arg) => {
         spawnArgs.push(arg.microphoneID);
         spawnArgs.push(arg.recordingName);
     } else {
-        spawnArgs.push(arg.musicFolder);
+        spawnArgs.push(arg.folderName);
     }
+    
+    startRecording(spawnArgs);
+});
 
+ipcMain.on("stopRecording", (event, arg) => {
+    killAudioChild().then(result => {
+        win.webContents.send("stoppedRecording");
+    });
+});
+
+
+const startRecording = spawnArgs => {
     child = spawn("audio\\bin\\Debug\\net6.0-windows\\audio.exe", spawnArgs, { shell: true });
 
     let server = net.createServer(stream => {
@@ -90,10 +101,4 @@ ipcMain.on("startRecording", (event, arg) => {
 
         win.webContents.send("recordingStatus", "unknown");
     });
-});
-
-ipcMain.on("stopRecording", (event, arg) => {
-    killAudioChild().then(result => {
-        win.webContents.send("stoppedRecording");
-    });
-});
+}

@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const { spawn } = require("child_process");
 const net = require("net");
 
+process.env.version = "1.0.0";
+
 let win;
 let child;
 

@@ -50,3 +50,11 @@ button:hover {
 button:active {
     background-color: var(--general-button-active);
 }
+
+#version {
+    margin: 5px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    color: var(--primary-shadow-color)
+}

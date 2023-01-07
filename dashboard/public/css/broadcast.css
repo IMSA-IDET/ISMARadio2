@@ -4,6 +4,7 @@ body {
 
 #broadcastContainer {
     margin: 0px 30px 30px 80px;
+    padding: 2px;
 }
 
 #dashboardContainer {

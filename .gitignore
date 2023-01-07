@@ -121,3 +121,6 @@ obj
 
 # Authentication credentials
 auth.json
+
+# Electron builds
+out

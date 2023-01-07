@@ -66,7 +66,7 @@ ipcMain.on("stopRecording", (event, arg) => {
 
 
 const startRecording = spawnArgs => {
-    child = spawn("audio\\bin\\Debug\\net6.0-windows\\audio.exe", spawnArgs, { shell: true });
+    child = spawn("resources\\app\\audio\\bin\\Debug\\net6.0-windows\\audio.exe", spawnArgs, { shell: true });
 
     let server = net.createServer(stream => {
         stream.on("end", () => {

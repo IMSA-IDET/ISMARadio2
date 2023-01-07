@@ -51,9 +51,8 @@ namespace audio
             };
 
 
-            string workingDir = Environment.CurrentDirectory;
-            string projectDir = Directory.GetParent(workingDir).FullName;
-            string outputDir = Path.Combine(projectDir, @"public\record");
+            string projectDir = Environment.CurrentDirectory;
+            string outputDir = Path.Combine(projectDir, @"record");
             Directory.CreateDirectory(outputDir);
             string outputPath = Path.Combine(outputDir, recordingName + ".wav");
 

@@ -76,7 +76,7 @@ namespace audio
                 websocket.SendSoundData(buffer);
 
                 // Stop recording at 30 seconds
-                if (writer.Position < waveIn.WaveFormat.AverageBytesPerSecond * 30)
+                if (writer.Position < waveIn.WaveFormat.AverageBytesPerSecond * 60 * 60)
                 {
                     writer.Write(e.Buffer, 0, e.BytesRecorded);
                 }

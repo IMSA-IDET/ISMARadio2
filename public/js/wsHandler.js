@@ -1,5 +1,9 @@
 const serverURL = `ws://${window.location.hostname}:${window.location.port}`;
 
+if (location.protocol === "https:") {
+    serverURL = serverURL.replace("ws:", "wss:");
+}
+
 let server = new WebSocket(serverURL);
 
 server.addEventListener("message", event => {

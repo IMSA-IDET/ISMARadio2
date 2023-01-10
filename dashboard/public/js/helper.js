@@ -4,10 +4,15 @@ const GetSocketURL = containPassword => {
         password = `/?password=${localStorage.getItem("PasswordSet")}`;
     }
 
-    return `ws://${localStorage.getItem("HostSet")}:${localStorage.getItem("PortSet")}${password}`;
+    let protocol = "ws:";
+    if (location.protocol === "https:") {
+        protocol = "wss:";
+    }
+
+    return `${protocol}//${localStorage.getItem("HostSet")}:${localStorage.getItem("PortSet")}${password}`;
 }
 
-const GetServerURL = () => `http://${localStorage.getItem("HostSet")}:${localStorage.getItem("PortSet")}`;
+const GetServerURL = () => `${localStorage.getItem("HostSet")}:${localStorage.getItem("PortSet")}`;
 
 const CheckPassword = () => {
     return new Promise((resolve, reject) => {

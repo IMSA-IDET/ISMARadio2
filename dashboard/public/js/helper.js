@@ -5,11 +5,11 @@ const GetSocketURL = containPassword => {
     }
 
     let protocol = "ws:";
-    if (location.protocol === "https:") {
+    if (localStorage.getItem("HostSet").includes("https:")) {
         protocol = "wss:";
     }
 
-    return `${protocol}//${localStorage.getItem("HostSet")}:${localStorage.getItem("PortSet")}${password}`;
+    return `${protocol}//${localStorage.getItem("HostSet").replace("http://", "").replace("https://", "")}:${localStorage.getItem("PortSet")}${password}`;
 }
 
 const GetServerURL = () => `${localStorage.getItem("HostSet")}:${localStorage.getItem("PortSet")}`;
